@@ -1,33 +1,35 @@
 @import "tailwindcss";
 
+
 @theme inline {
 
-  /* Clean Stellar Green */
+  /* STELLAR GREEN CLEAN UI */
 
-  --color-cream: #FFFFFF;
-  --color-cream-dark: #F8FAFC;
+  --color-cream:#FFFFFF;
+  --color-cream-dark:#F8FAFC;
 
-  --color-burgundy: #059669;
-  --color-burgundy-light: #10B981;
+  --color-burgundy:#059669;
+  --color-burgundy-light:#10B981;
 
-  --color-lime: #10B981;
-  --color-lime-dark: #047857;
+  --color-lime:#10B981;
+  --color-lime-dark:#047857;
 
-  --color-ink: #0F172A;
-  --color-ink-soft: #64748B;
+  --color-ink:#0F172A;
+  --color-ink-soft:#475569;
 
-  --color-rust: #22C55E;
-  --color-mist: #CBD5E1;
+  --color-rust:#22C55E;
+  --color-mist:#CBD5E1;
 
-  --color-card-border: #E2E8F0;
+  --color-card-border:#E2E8F0;
 
 
-  --font-bebas: 'Inter', sans-serif;
-  --font-serif: 'Inter', sans-serif;
-  --font-mono-plex: 'IBM Plex Mono', monospace;
+  --font-bebas:'Inter',sans-serif;
+  --font-serif:'Inter',sans-serif;
+  --font-mono-plex:'IBM Plex Mono',monospace;
   --font-manrope:'Manrope',sans-serif;
 
 }
+
 
 
 :root{
@@ -36,6 +38,7 @@
  --foreground:#0F172A;
 
 }
+
 
 
 body{
@@ -58,70 +61,153 @@ body{
 }
 
 
-/* remove grain */
+
+/* remove old texture */
 
 body::before{
 
- display:none;
+ display:none!important;
 
 }
 
 
-/* -----------------
- TEXT
------------------- */
 
-.text-lime{
-
- color:#059669 !important;
-
-}
+/* ======================
+   GLOBAL TEXT FIX
+====================== */
 
 
-.text-burgundy{
+*{
 
- color:#047857 !important;
+ opacity:1;
+
+ text-rendering:optimizeLegibility;
 
 }
 
 
-.text-ink{
 
- color:#0F172A !important;
+h1,
+h2,
+h3,
+h4{
+
+ color:#0F172A!important;
+
+ font-family:'Manrope',sans-serif!important;
+
+ letter-spacing:-1px!important;
+
+}
+
+
+
+p{
+
+ color:#334155!important;
+
+ line-height:1.7;
+
+}
+
+
+
+/* Tailwind color overrides */
+
+
+.text-lime,
+[class*="text-lime"]{
+
+ color:#059669!important;
+
+}
+
+
+.text-burgundy,
+[class*="text-burgundy"]{
+
+ color:#047857!important;
+
+}
+
+
+.text-ink,
+[class*="text-ink"]{
+
+ color:#0F172A!important;
 
 }
 
 
 .text-ink-soft{
 
- color:#64748B!important;
+ color:#475569!important;
+
+}
+
+
+.text-white,
+.text-cream,
+[class*="text-cream"]{
+
+ color:#FFFFFF!important;
 
 }
 
 
 
-/* -----------------
- SIDEBAR FIX
------------------- */
+
+/* ======================
+   NAVBAR
+====================== */
+
+
+nav,
+header{
+
+ background:white!important;
+
+ border-bottom:
+
+ 1px solid #E5E7EB;
+
+}
+
+
+nav *,
+header *{
+
+ color:#0F172A!important;
+
+}
+
+
+
+/* ======================
+   SIDEBAR
+====================== */
 
 
 aside{
 
  background:#FFFFFF!important;
 
- border-right:1px solid #E5E7EB;
+ border-right:
+
+ 1px solid #E5E7EB;
 
  box-shadow:
- 8px 0 30px rgba(0,0,0,.04);
+
+ 8px 0 30px rgba(15,23,42,.05);
 
 }
 
 
-aside button,
-aside a{
 
+aside a,
+aside button{
 
- background:#FFFFFF!important;
+ background:white!important;
 
  color:#0F172A!important;
 
@@ -130,7 +216,7 @@ aside a{
  1px solid #E5E7EB;
 
 
- border-radius:16px;
+ border-radius:14px;
 
 
  box-shadow:none!important;
@@ -139,12 +225,12 @@ aside a{
 
 
 
-aside button:hover,
-aside a:hover{
+aside a:hover,
+aside button:hover{
 
  background:#ECFDF5!important;
 
- border-color:#10B981;
+ border-color:#10B981!important;
 
  color:#059669!important;
 
@@ -152,14 +238,17 @@ aside a:hover{
 
 
 
-/* -----------------
- REAL BUTTONS ONLY
------------------- */
+
+/* ======================
+   BUTTON FIX
+====================== */
 
 
 button{
 
  transition:.25s ease;
+
+ font-weight:600;
 
 }
 
@@ -181,15 +270,72 @@ button:not(aside button):hover{
 
 
 
-/* -----------------
- CARDS
------------------- */
+/* Green buttons */
+
+button[class*="bg-lime"],
+button[class*="bg-burgundy"],
+a[class*="bg-lime"],
+a[class*="bg-burgundy"]{
+
+
+ background:
+
+ linear-gradient(
+ 135deg,
+ #10B981,
+ #059669
+ )!important;
+
+
+ color:white!important;
+
+ border:none!important;
+
+}
+
+
+
+/* ======================
+   GREEN SECTION FIX
+====================== */
+
+
+.bg-lime,
+.bg-burgundy,
+[class*="bg-lime"],
+[class*="bg-burgundy"]{
+
+
+ background:#059669!important;
+
+}
+
+
+
+.bg-lime *,
+.bg-burgundy *,
+[class*="bg-lime"] *,
+[class*="bg-burgundy"] *{
+
+
+ color:white!important;
+
+ opacity:1!important;
+
+}
+
+
+
+
+/* ======================
+   CARDS
+====================== */
 
 
 .card,
 .glass{
 
- background:#FFFFFF;
+ background:#FFFFFF!important;
 
  border:
 
@@ -201,16 +347,42 @@ button:not(aside button):hover{
 
  box-shadow:
 
- 0 15px 35px
- rgba(15,23,42,.06);
+ 0 15px 40px
+ rgba(15,23,42,.08);
 
 }
 
 
 
-/* -----------------
- SCROLLBAR
------------------- */
+/* ======================
+   SMALL TEXT
+====================== */
+
+
+.text-xs,
+.text-sm{
+
+ opacity:1!important;
+
+}
+
+
+
+/* reduce old brutal spacing */
+
+
+.tracking-widest,
+[class*="tracking"]{
+
+ letter-spacing:1px!important;
+
+}
+
+
+
+/* ======================
+   SCROLLBAR
+====================== */
 
 
 ::-webkit-scrollbar{
@@ -237,68 +409,85 @@ button:not(aside button):hover{
 
 
 
-/* Animations */
+/* ======================
+   ANIMATION
+====================== */
+
 
 @keyframes tickerScroll{
 
-from{
-transform:translateX(0);
-}
+ from{
+ transform:translateX(0);
+ }
 
-to{
-transform:translateX(-50%);
-}
+ to{
+ transform:translateX(-50%);
+ }
 
 }
 
 
 .animate-ticker{
 
-animation:tickerScroll 30s linear infinite;
+ animation:tickerScroll
+ 30s linear infinite;
 
 }
+
 
 
 @keyframes ringRotate{
 
-from{
-transform:rotate(0deg);
+ from{
+ transform:rotate(0deg);
+ }
+
+ to{
+ transform:rotate(360deg);
+ }
+
 }
 
-to{
-transform:rotate(360deg);
-}
-
-}
 
 
 .animate-ring{
 
-animation:ringRotate 20s linear infinite;
+ animation:ringRotate
+ 20s linear infinite;
 
 }
+
 
 .animate-ring-reverse{
 
-animation:ringRotate 14s linear infinite reverse;
+ animation:ringRotate
+ 14s linear infinite reverse;
 
 }
+
 
 .animate-ring-fast{
 
-animation:ringRotate 9s linear infinite;
+ animation:ringRotate
+ 9s linear infinite;
 
 }
+
 
 
 @keyframes blink{
 
 0%,100%{
-opacity:1;
+
+ opacity:1;
+
 }
 
+
 50%{
-opacity:.35;
+
+ opacity:.35;
+
 }
 
 }
@@ -306,6 +495,8 @@ opacity:.35;
 
 .animate-blink{
 
-animation:blink 2s ease-in-out infinite;
+ animation:
+ blink
+ 2s ease-in-out infinite;
 
 }
