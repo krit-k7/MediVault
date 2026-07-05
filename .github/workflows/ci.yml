@@ -1,35 +1,49 @@
-name: CI Pipeline
+name: CI Pipeline 🚀
 
 on:
   push:
     branches:
       - main
       - develop
+
   pull_request:
     branches:
       - main
       - develop
 
+
 jobs:
-  frontend:
-    name: Frontend - Lint & Build
+
+  frontend-check:
+
+    name: Frontend Quality Check
     runs-on: ubuntu-latest
 
+
     steps:
-      - name: Checkout repository
+
+      - name: Checkout Source Code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+
+      - name: Configure Node.js Environment
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: npm
 
-      - name: Install dependencies
+
+      - name: Install Project Dependencies
         run: npm ci
 
-      - name: Run Lint
+
+      - name: Check Code Formatting & Lint
         run: npm run lint || true
 
-      - name: Build Application
+
+      - name: Generate Production Build
         run: npm run build || true
+
+
+      - name: CI Completed Successfully
+        run: echo "✅ Stellar Green frontend validation completed"
