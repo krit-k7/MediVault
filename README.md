@@ -216,6 +216,11 @@ Green_Belt/
 │       └── ci.yml          # GitHub Actions CI/CD
 └── package.json
 ```
+## 📊 User Feedback — 30+ Real Responses
+
+We collected feedback from **10+ real users** who tested TrustWork on Stellar Testnet.
+
+**→ [View Full Feedback Spreadsheet](https://docs.google.com/spreadsheets/d/1IyGvBV_Dky2kYXh3Jz7e7Ry--wKe230JZ_cBQI2VnTM/edit?gid=248039410#gid=248039410)**
 
 ## 🔄 Real-Time Event Streaming
 The application listens for contract events and updates the UI in real-time:
