@@ -45,7 +45,8 @@ MediChain is a fully decentralized Electronic Health Records (EHR) and Telemedic
 
 ## 📱 Mobile Responsive View:-
 *The application is built with a mobile-first approach, ensuring a seamless experience across all devices.*
-<img width="1261" height="581" alt="image" src="https://github.com/user-attachments/assets/471e393a-ac8c-4849-b8ef-a11c60071efb" />
+<img width="1920" height="939" alt="image" src="https://github.com/user-attachments/assets/c22e7c16-c32d-4303-9734-aca1f28cb129" />
+
 
 
 **Pipeline runs:**
