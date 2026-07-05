@@ -2,179 +2,162 @@
 
 @theme inline {
 
-  /* STELLAR GREEN THEME */
+  /* Clean Stellar Green */
 
   --color-cream: #FFFFFF;
   --color-cream-dark: #F8FAFC;
 
-  --color-burgundy: #16A34A;
-  --color-burgundy-light: #22C55E;
+  --color-burgundy: #059669;
+  --color-burgundy-light: #10B981;
 
-  --color-lime: #22C55E;
-  --color-lime-dark: #15803D;
+  --color-lime: #10B981;
+  --color-lime-dark: #047857;
 
-  --color-ink: #020617;
-  --color-ink-soft: #475569;
+  --color-ink: #0F172A;
+  --color-ink-soft: #64748B;
 
-  --color-rust: #10B981;
-  --color-mist: #E2E8F0;
+  --color-rust: #22C55E;
+  --color-mist: #CBD5E1;
 
-  --color-card-border: #E5E7EB;
+  --color-card-border: #E2E8F0;
 
 
-  /* FONTS */
-
-  --font-bebas: 'Manrope', sans-serif;
-  --font-serif: 'Manrope', sans-serif;
+  --font-bebas: 'Inter', sans-serif;
+  --font-serif: 'Inter', sans-serif;
   --font-mono-plex: 'IBM Plex Mono', monospace;
-  --font-manrope: 'Manrope', sans-serif;
-}
-
-
-
-:root {
-
-  --background:#FFFFFF;
-  --foreground:#020617;
+  --font-manrope:'Manrope',sans-serif;
 
 }
 
 
+:root{
 
-body {
-
-  background:
-    radial-gradient(
-      circle at 80% 10%,
-      rgba(34,197,94,.15),
-      transparent 35%
-    ),
-    #FFFFFF;
-
-  color:var(--foreground);
-
-  font-family:'Manrope',sans-serif;
-
-  cursor:default;
-
-  overflow-x:hidden;
+ --background:#FFFFFF;
+ --foreground:#0F172A;
 
 }
 
 
+body{
 
-/* REMOVE OLD GRAIN EFFECT */
+ background:
+ linear-gradient(
+ 180deg,
+ #FFFFFF,
+ #F8FAFC
+ );
 
-body::before {
+ color:var(--foreground);
 
- display:none !important;
+ font-family:'Manrope',sans-serif;
 
-}
+ cursor:default;
 
-
-
-/* ======================
-   TEXT FIX
-====================== */
-
-
-.text-lime,
-.text-lime-dark{
-
- color:#16A34A !important;
+ overflow-x:hidden;
 
 }
 
 
-.text-burgundy,
+/* remove grain */
+
+body::before{
+
+ display:none;
+
+}
+
+
+/* -----------------
+ TEXT
+------------------ */
+
+.text-lime{
+
+ color:#059669 !important;
+
+}
+
+
+.text-burgundy{
+
+ color:#047857 !important;
+
+}
+
+
 .text-ink{
 
- color:#020617 !important;
+ color:#0F172A !important;
 
 }
 
 
 .text-ink-soft{
 
- color:#475569 !important;
+ color:#64748B!important;
 
 }
 
 
 
-/* remove weird spacing */
-
-*{
-
- letter-spacing:normal;
-
-}
+/* -----------------
+ SIDEBAR FIX
+------------------ */
 
 
+aside{
 
-/* ======================
-   NAVBAR
-====================== */
+ background:#FFFFFF!important;
 
-
-nav,
-header{
-
- background:
- rgba(255,255,255,.85)!important;
-
- backdrop-filter:blur(20px);
-
- border-bottom:
- 1px solid #E5E7EB;
-
-}
-
-
-nav *,
-header *{
-
- color:#020617!important;
-
-}
-
-
-nav a:hover{
-
- color:#16A34A!important;
-
-}
-
-
-
-/* ======================
-   BUTTONS
-====================== */
-
-
-button,
-.btn,
-a[class*="bg"]{
-
-
- background:
- linear-gradient(
- 135deg,
- #22C55E,
- #16A34A
- )!important;
-
-
- color:white!important;
-
-
- border-radius:14px;
-
+ border-right:1px solid #E5E7EB;
 
  box-shadow:
- 0 15px 30px
- rgba(34,197,94,.25);
+ 8px 0 30px rgba(0,0,0,.04);
 
+}
+
+
+aside button,
+aside a{
+
+
+ background:#FFFFFF!important;
+
+ color:#0F172A!important;
+
+ border:
+
+ 1px solid #E5E7EB;
+
+
+ border-radius:16px;
+
+
+ box-shadow:none!important;
+
+}
+
+
+
+aside button:hover,
+aside a:hover{
+
+ background:#ECFDF5!important;
+
+ border-color:#10B981;
+
+ color:#059669!important;
+
+}
+
+
+
+/* -----------------
+ REAL BUTTONS ONLY
+------------------ */
+
+
+button{
 
  transition:.25s ease;
 
@@ -182,98 +165,71 @@ a[class*="bg"]{
 
 
 
-button:hover,
-.btn:hover{
+button:not(aside button){
 
- transform:translateY(-3px);
-
-}
-
-
-
-/* ======================
-   DARK SECTION FIX
-====================== */
-
-
-.bg-ink,
-.bg-black,
-.bg-\[\#000\],
-.bg-\[\#000000\]{
-
- background:#F8FAFC!important;
-
- color:#020617!important;
+ border-radius:14px;
 
 }
 
 
 
-.bg-ink *,
-.bg-black *{
+button:not(aside button):hover{
 
- color:#020617!important;
+ transform:translateY(-2px);
 
 }
 
 
 
-/* ======================
-   CARDS / GLASS
-====================== */
+/* -----------------
+ CARDS
+------------------ */
 
 
 .card,
-.glass,
-section div[class*="border"]{
+.glass{
 
-
- background:
- rgba(255,255,255,.8);
-
-
- backdrop-filter:
- blur(18px);
-
+ background:#FFFFFF;
 
  border:
+
  1px solid #E5E7EB;
 
 
- border-radius:24px;
+ border-radius:22px;
 
 
  box-shadow:
 
- 0 20px 50px
- rgba(15,23,42,.08);
+ 0 15px 35px
+ rgba(15,23,42,.06);
 
 }
 
 
 
-/* ======================
-   SCROLLBAR
-====================== */
+/* -----------------
+ SCROLLBAR
+------------------ */
 
 
-.custom-scrollbar::-webkit-scrollbar{
+::-webkit-scrollbar{
 
  width:6px;
 
 }
 
 
-.custom-scrollbar::-webkit-scrollbar-track{
+::-webkit-scrollbar-track{
 
- background:#F1F5F9;
+ background:#F8FAFC;
 
 }
 
 
-.custom-scrollbar::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb{
 
- background:#22C55E;
+ background:#10B981;
 
  border-radius:20px;
 
@@ -281,115 +237,75 @@ section div[class*="border"]{
 
 
 
-/* ======================
-   ANIMATIONS
-====================== */
-
-
+/* Animations */
 
 @keyframes tickerScroll{
 
-
- from{
-
- transform:translateX(0);
-
- }
-
-
- to{
-
- transform:translateX(-50%);
-
- }
-
+from{
+transform:translateX(0);
 }
 
+to{
+transform:translateX(-50%);
+}
+
+}
 
 
 .animate-ticker{
 
- animation:
- tickerScroll
- 30s
- linear
- infinite;
+animation:tickerScroll 30s linear infinite;
 
 }
-
 
 
 @keyframes ringRotate{
 
-
- from{
-
- transform:rotate(0deg);
-
- }
-
-
- to{
-
- transform:rotate(360deg);
-
- }
-
+from{
+transform:rotate(0deg);
 }
 
+to{
+transform:rotate(360deg);
+}
+
+}
 
 
 .animate-ring{
 
- animation:ringRotate
- 20s linear infinite;
+animation:ringRotate 20s linear infinite;
 
 }
-
 
 .animate-ring-reverse{
 
- animation:ringRotate
- 14s linear infinite reverse;
+animation:ringRotate 14s linear infinite reverse;
 
 }
-
 
 .animate-ring-fast{
 
- animation:ringRotate
- 9s linear infinite;
+animation:ringRotate 9s linear infinite;
 
 }
-
 
 
 @keyframes blink{
 
-
 0%,100%{
-
- opacity:1;
-
+opacity:1;
 }
-
 
 50%{
-
- opacity:.35;
-
+opacity:.35;
 }
 
 }
-
 
 
 .animate-blink{
 
- animation:
- blink
- 2s
- ease-in-out
- infinite;
+animation:blink 2s ease-in-out infinite;
 
 }
