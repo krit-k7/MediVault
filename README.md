@@ -9,22 +9,24 @@ MediChain is a fully decentralized Electronic Health Records (EHR) and Telemedic
 
 
 ## 📸 Platform Screenshots:-
+### Home
+<img width="1920" height="1080" alt="Screenshot (170)" src="https://github.com/user-attachments/assets/d2c106ce-97bf-49ed-9d42-1242e5333187" />
+
+
+
 ### Dashboard & Upload
-<img width="1471" height="700" alt="image" src="https://github.com/user-attachments/assets/213f320a-97c5-4a64-a465-e5305fdeceeb" />
+<img width="1920" height="1080" alt="Screenshot (167)" src="https://github.com/user-attachments/assets/32d86e74-32c9-458a-8480-f712262c52f1" />
+
+
 
 
 ### Medical Records Overview
-<img width="1470" height="660" alt="image" src="https://github.com/user-attachments/assets/9f55c9ac-0209-458a-8455-0a0dd41dd337" />
+<img width="1920" height="1080" alt="Screenshot (168)" src="https://github.com/user-attachments/assets/adcdd32f-8785-46ea-bd0e-c87b4087c9fe" />
+
 
 
 ### Record Detail View
-<img width="1461" height="748" alt="image" src="https://github.com/user-attachments/assets/248bdda8-5351-4f87-b60d-a62593e36185" />
-
-
-In mobile-friendly 
-<img width="1548" height="779" alt="image" src="https://github.com/user-attachments/assets/9b6c4f16-d26e-4a83-a3e0-73da04a43887" />
-
-
+<img width="1920" height="1080" alt="Screenshot (169)" src="https://github.com/user-attachments/assets/fe49ea89-e188-4dcf-a779-14fc5b4a82ae" />
 
 
 
