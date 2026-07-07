@@ -6,7 +6,7 @@ MediChain is a fully decentralized Electronic Health Records (EHR) and Telemedic
 - **Live Demo URL:** [https://stellar-green-ten.vercel.app/](https://stellar-green-sepia.vercel.app/)
 - **Demo Video:** [YouTube Link](https://www.youtube.com/watch?v=UFq0hRb6Gqc)
 
-
+[![CI Pipeline](https://github.com/krit-k7/Stellar-Green/actions/workflows/ci.yml/badge.svg)](https://github.com/krit-k7/Stellar-Green/actions/workflows/ci.yml)
 
 ## 📸 Platform Screenshots:-
 ### Home
