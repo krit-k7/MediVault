@@ -179,7 +179,8 @@ This is the same flow described in the [Inter-Contract Calls](#-inter-contract-c
 ### 📱 Mobile Responsive View
 *The application is built with a mobile-first approach, ensuring a seamless experience across all devices.*
 
-<img width="1920" height="939" alt="MediChain Mobile Responsive Screenshot" src="https://github.com/user-attachments/assets/c22e7c16-c32d-4303-9734-aca1f28cb129" />
+<img width="1916" height="971" alt="image" src="https://github.com/user-attachments/assets/7edb2439-e2d7-4b5f-914d-e2912374a2e1" />
+
 
 ### Passing Smart Contract Tests
 
