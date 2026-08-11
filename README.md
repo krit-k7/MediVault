@@ -150,7 +150,9 @@ This is the same flow described in the [Inter-Contract Calls](#-inter-contract-c
 
 
 ### Dashboard & Upload
-<img width="1920" height="1080" alt="MediChain Dashboard Screenshot" src="https://github.com/user-attachments/assets/32d86e74-32c9-458a-8480-f712262c52f1" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/b1d927ed-b841-4c66-aee4-8e9396952e4a" />
+
+
 
 ### Medical Records Overview
 <img width="1920" height="1080" alt="MediChain Records Overview Screenshot" src="https://github.com/user-attachments/assets/adcdd32f-8785-46ea-bd0e-c87b4087c9fe" />
