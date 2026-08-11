@@ -146,7 +146,8 @@ This is the same flow described in the [Inter-Contract Calls](#-inter-contract-c
 ## 📸 Platform Screenshots
 
 ### Home
-<img width="1920" height="1080" alt="MediChain Home Screenshot" src="https://github.com/user-attachments/assets/d2c106ce-97bf-49ed-9d42-1242e5333187" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a1e3c598-8f2d-4746-8af9-f3ca0915d93c" />
+
 
 ### Dashboard & Upload
 <img width="1920" height="1080" alt="MediChain Dashboard Screenshot" src="https://github.com/user-attachments/assets/32d86e74-32c9-458a-8480-f712262c52f1" />
