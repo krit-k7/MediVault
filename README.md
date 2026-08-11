@@ -155,7 +155,8 @@ This is the same flow described in the [Inter-Contract Calls](#-inter-contract-c
 
 
 ### Medical Records Overview
-<img width="1920" height="1080" alt="MediChain Records Overview Screenshot" src="https://github.com/user-attachments/assets/adcdd32f-8785-46ea-bd0e-c87b4087c9fe" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/aaa49fbe-a603-4ebb-ac9b-cb4f6828836b" />
+
 
 ### Record Detail View
 <img width="1920" height="1080" alt="MediChain Record Detail Screenshot" src="https://github.com/user-attachments/assets/fe49ea89-e188-4dcf-a779-14fc5b4a82ae" />
