@@ -245,7 +245,7 @@ This demonstrates real inter-contract communication on Soroban.
 *(Deployed on Soroban Testnet)*
 
 ```text
-MediChain Main Contract:  CBG5DNSZQQJITR7OH5ELPDXLUG3EEX7W3FWNCFOZANQSXMQDUR2LGW5N
+MediChain Main Contract:  CCEQ5H7S27TELBHNE7AVHSLK3KXCJHDWDRNAOEVRXJLSQNRWFEDSOA2T
 MediReward Token (MRT):    CAS3J7J6Y7J6Y7J6Y7J6Y7J6Y7J6Y7J6Y7J6Y7J6Y7J6Y7J6Y7J6Y7J6
 ```
 
@@ -263,7 +263,7 @@ Inter-Contract Call:     027768b7685b70a8239452b439534b0bca90b5580c432ea415fd731
 ### 🔍 View on Explorer
 
 Check the live contract on the Stellar Development Foundation Testnet Explorer:
-[Stellar Laboratory - CBG5DN...LGW5N](https://lab.stellar.org/r/testnet/contract/CBG5DNSZQQJITR7OH5ELPDXLUG3EEX7W3FWNCFOZANQSXMQDUR2LGW5N)
+[Stellar Laboratory - CBG5DN...LGW5N](https://lab.stellar.org/r/testnet/contract/CCEQ5H7S27TELBHNE7AVHSLK3KXCJHDWDRNAOEVRXJLSQNRWFEDSOA2T)
 
 ---
 

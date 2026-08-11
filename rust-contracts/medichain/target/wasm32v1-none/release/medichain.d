@@ -1,0 +1,1 @@
+/workspaces/Stellar-Green/rust-contracts/medichain/target/wasm32v1-none/release/medichain.wasm: /workspaces/Stellar-Green/rust-contracts/medichain/src/lib.rs /workspaces/Stellar-Green/rust-contracts/medichain/src/token.rs
