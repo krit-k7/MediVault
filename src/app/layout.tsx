@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, DM_Serif_Display, IBM_Plex_Mono, Manrope } from "next/font/google";
+import { DM_Serif_Display, IBM_Plex_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
-
-const bebasNeue = Bebas_Neue({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-bebas",
-});
 
 const dmSerifDisplay = DM_Serif_Display({
   weight: "400",
@@ -17,20 +11,21 @@ const dmSerifDisplay = DM_Serif_Display({
 });
 
 const ibmPlexMono = IBM_Plex_Mono({
-  weight: ["400", "600"],
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
   variable: "--font-mono-plex",
 });
 
 const manrope = Manrope({
-  weight: ["300", "400", "600", "800"],
+  weight: ["300", "400", "500", "600", "800"],
   subsets: ["latin"],
   variable: "--font-manrope",
 });
 
 export const metadata: Metadata = {
-  title: "MediVault — Medical Records on Chain",
-  description: "Secure, immutable, patient-controlled health records on the Stellar/Soroban ecosystem.",
+  title: "MediVault — Confidential Health Records On Chain",
+  description:
+    "Secure, immutable, patient-controlled health records on the Stellar/Soroban ecosystem.",
 };
 
 export default function RootLayout({
@@ -41,12 +36,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bebasNeue.variable} ${dmSerifDisplay.variable} ${ibmPlexMono.variable} ${manrope.variable} antialiased`}
+      className={`${dmSerifDisplay.variable} ${ibmPlexMono.variable} ${manrope.variable} antialiased`}
     >
-      <body className="min-h-screen bg-cream text-ink font-manrope">
-        <Providers>
-          {children}
-        </Providers>
+      <body className="min-h-screen bg-obsidian text-parchment font-manrope">
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
