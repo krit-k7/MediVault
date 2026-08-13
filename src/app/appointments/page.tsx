@@ -4,35 +4,35 @@ import { Calendar, Clock, Video, Wallet } from "lucide-react";
 
 export default function AppointmentsPage() {
   return (
-    <div className="container mx-auto px-4 py-8 max-w-7xl">
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+    <div className="container mx-auto px-4 py-10 max-w-7xl">
+      <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Telemedicine Appointments</h1>
-          <p className="text-slate-600 dark:text-slate-400 mt-1">Book and manage secure smart-contract based consultations.</p>
+          <h1 className="font-serif text-3xl text-parchment">Telemedicine Appointments</h1>
+          <p className="text-muted mt-1 font-light">Book and manage secure smart-contract based consultations.</p>
         </div>
-        <button className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2.5 rounded-xl font-medium transition-colors shadow-sm">
+        <button className="btn-gold">
           Book New Consultation
         </button>
       </div>
 
       <div className="space-y-6">
-        <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Upcoming Consultations</h2>
-        
-        <div className="bg-white dark:bg-slate-950 rounded-2xl border border-primary-200 dark:border-primary-900/50 shadow-sm overflow-hidden relative">
-          <div className="absolute top-0 left-0 w-1.5 h-full bg-primary-500" />
+        <h2 className="font-serif text-xl text-parchment mb-4">Upcoming Consultations</h2>
+
+        <div className="panel overflow-hidden relative">
+          <div className="absolute top-0 left-0 w-1 h-full bg-gold" />
           <div className="p-6 sm:p-8 flex flex-col md:flex-row gap-6 md:items-center justify-between">
             <div className="flex items-start gap-5">
-              <div className="w-16 h-16 rounded-2xl bg-primary-50 dark:bg-primary-500/10 flex flex-col items-center justify-center shrink-0 border border-primary-100 dark:border-primary-500/20 text-primary-600 dark:text-primary-400">
+              <div className="w-16 h-16 rounded-2xl bg-gold/10 border border-gold/30 flex flex-col items-center justify-center shrink-0 text-gold-soft">
                 <span className="text-xs font-bold uppercase tracking-wider">Oct</span>
                 <span className="text-2xl font-extrabold leading-none mt-1">28</span>
               </div>
               <div>
                 <div className="flex items-center gap-3 mb-1">
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">Dr. Sarah Smith</h3>
-                  <span className="px-2 py-0.5 rounded text-xs font-bold bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400">Confirmed</span>
+                  <h3 className="font-serif text-xl text-parchment">Dr. Sarah Smith</h3>
+                  <span className="px-2 py-0.5 rounded text-xs font-bold bg-success/10 text-success border border-success/40">Confirmed</span>
                 </div>
-                <p className="text-slate-500 font-medium">Cardiology Follow-up</p>
-                <div className="flex items-center gap-4 mt-3 text-sm text-slate-600 dark:text-slate-400">
+                <p className="text-muted font-medium">Cardiology Follow-up</p>
+                <div className="flex items-center gap-4 mt-3 text-sm text-muted">
                   <div className="flex items-center gap-1.5">
                     <Clock className="w-4 h-4" /> 10:00 AM - 10:30 AM
                   </div>
@@ -42,32 +42,32 @@ export default function AppointmentsPage() {
                 </div>
               </div>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-              <button className="flex items-center justify-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-3 rounded-xl font-medium hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors w-full sm:w-auto">
+              <button className="flex items-center justify-center gap-2 btn-gold w-full sm:w-auto">
                 <Video className="w-5 h-5" />
                 Join Call
               </button>
-              <button className="flex items-center justify-center gap-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 px-6 py-3 rounded-xl font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors w-full sm:w-auto">
+              <button className="flex items-center justify-center gap-2 btn-outline w-full sm:w-auto">
                 Reschedule
               </button>
             </div>
           </div>
         </div>
 
-        <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-12 mb-4">Past Consultations</h2>
-        
-        <div className="bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <h2 className="font-serif text-xl text-parchment mt-14 mb-4">Past Consultations</h2>
+
+        <div className="panel p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-900 flex items-center justify-center shrink-0">
-              <Calendar className="w-6 h-6 text-slate-400" />
+            <div className="w-12 h-12 rounded-xl border border-line-strong flex items-center justify-center shrink-0">
+              <Calendar className="w-6 h-6 text-muted" />
             </div>
             <div>
-              <h3 className="font-bold text-slate-900 dark:text-white">Dr. Mike Adams</h3>
-              <p className="text-sm text-slate-500">General Practice • Sep 12, 2026</p>
+              <h3 className="font-bold text-parchment">Dr. Mike Adams</h3>
+              <p className="text-sm text-muted">General Practice • Sep 12, 2026</p>
             </div>
           </div>
-          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800">
+          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-charcoal-light text-muted border border-line-strong">
             Completed (0.03 ETH Released)
           </span>
         </div>
