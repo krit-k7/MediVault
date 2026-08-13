@@ -151,20 +151,24 @@ This is the same flow described in the [Inter-Contract Calls](#-inter-contract-c
 ## 📸 Platform Screenshots
 
 ### Home
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a1e3c598-8f2d-4746-8af9-f3ca0915d93c" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/72e84809-a2e0-4358-a55c-df2a1ed4d015" />
+
 
 
 ### Dashboard & Upload
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/b1d927ed-b841-4c66-aee4-8e9396952e4a" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/04cc8bd4-54cd-4f2b-9982-442fb7f4026b" />
+
 
 
 
 ### Medical Records Overview
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/aaa49fbe-a603-4ebb-ac9b-cb4f6828836b" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2121ca3d-b89c-4eb4-9626-102fcb111b7c" />
+
 
 
 ### Record Detail View
-<img width="1920" height="1080" alt="MediChain Record Detail Screenshot" src="https://github.com/user-attachments/assets/fe49ea89-e188-4dcf-a779-14fc5b4a82ae" />
+<img width="1915" height="859" alt="image" src="https://github.com/user-attachments/assets/0d7ad307-6316-4d57-9120-345dbfda2aeb" />
+
 
 *The application is fully responsive and supports secure medical data management.*
 
@@ -184,7 +188,8 @@ This is the same flow described in the [Inter-Contract Calls](#-inter-contract-c
 ### 📱 Mobile Responsive View
 *The application is built with a mobile-first approach, ensuring a seamless experience across all devices.*
 
-<img width="1916" height="971" alt="image" src="https://github.com/user-attachments/assets/7edb2439-e2d7-4b5f-914d-e2912374a2e1" />
+<img width="1919" height="865" alt="image" src="https://github.com/user-attachments/assets/022de8af-0b35-4fe2-8c50-8986798e2532" />
+
 
 
 ### Passing Smart Contract Tests
