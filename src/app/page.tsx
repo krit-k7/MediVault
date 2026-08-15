@@ -208,12 +208,12 @@ export default function Home() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-5">
-          <FeatureCard num="F — 001" title="End-to-End Encrypted Storage" desc="Every file is encrypted before it touches IPFS. Your private key, your data. Not even MediVault can read your records without your explicit permission." Icon={Lock} big />
-          <FeatureCard num="F — 002" title="Immutable Audit Trail" desc="Every access event is logged on-chain. Tamper-proof history forever." Icon={Link2} />
-          <FeatureCard num="F — 003" title="Granular Doctor Access" desc="Grant or revoke per-doctor access in seconds, on your terms." Icon={Eye} />
-          <FeatureCard num="F — 004" title="IPFS Pinned Files" desc="Records survive server outages — distributed across the globe permanently." Icon={FileText} />
-          <FeatureCard num="F — 005" title="Instant Wallet Auth" desc="No username, no password. Just sign with your wallet." Icon={Zap} />
-          <FeatureCard num="F — 006" title="Universal Portability" desc="Access from any device, anywhere. No vendor lock-in, ever." Icon={Globe2} />
+          <FeatureCard index={0} num="F — 001" title="End-to-End Encrypted Storage" desc="Every file is encrypted before it touches IPFS. Your private key, your data. Not even MediVault can read your records without your explicit permission." Icon={Lock} big />
+          <FeatureCard index={1} num="F — 002" title="Immutable Audit Trail" desc="Every access event is logged on-chain. Tamper-proof history forever." Icon={Link2} />
+          <FeatureCard index={2} num="F — 003" title="Granular Doctor Access" desc="Grant or revoke per-doctor access in seconds, on your terms." Icon={Eye} />
+          <FeatureCard index={3} num="F — 004" title="IPFS Pinned Files" desc="Records survive server outages — distributed across the globe permanently." Icon={FileText} />
+          <FeatureCard index={4} num="F — 005" title="Instant Wallet Auth" desc="No username, no password. Just sign with your wallet." Icon={Zap} />
+          <FeatureCard index={5} num="F — 006" title="Universal Portability" desc="Access from any device, anywhere. No vendor lock-in, ever." Icon={Globe2} />
         </div>
       </section>
 
@@ -271,16 +271,21 @@ export default function Home() {
 }
 
 function FeatureCard({
-  num, title, desc, Icon, big = false,
-}: { num: string; title: string; desc: string; Icon: React.ElementType; big?: boolean }) {
+  num, title, desc, Icon, big = false, index = 0,
+}: { num: string; title: string; desc: string; Icon: React.ElementType; big?: boolean; index?: number }) {
   return (
-    <div className={`panel p-10 group transition-all duration-300 hover:border-gold/40 flex flex-col ${big ? "md:col-span-1" : ""}`}>
-      <div className="font-mono-plex text-[10px] text-muted-dim tracking-[3px] mb-8">{num}</div>
-      <div className="w-12 h-12 rounded-lg border border-line-strong flex items-center justify-center mb-6 transition-all duration-300 group-hover:border-gold/50 group-hover:bg-gold/10">
+    <div
+      className={`panel feature-card p-10 group flex flex-col ${big ? "md:col-span-1" : ""}`}
+    >
+      <div className="font-mono-plex text-[10px] text-muted-dim tracking-[3px] mb-8 relative z-[2]">{num}</div>
+      <div
+        className="feature-icon-float w-12 h-12 rounded-lg border border-line-strong flex items-center justify-center mb-6 group-hover:border-gold/50 group-hover:bg-gold/10 relative z-[2]"
+        style={{ animationDelay: `${index * 0.35}s` }}
+      >
         <Icon className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
       </div>
-      <h3 className="font-serif text-[22px] leading-[1.25] text-parchment mb-3">{title}</h3>
-      <p className="text-sm leading-[1.7] text-muted font-light">{desc}</p>
+      <h3 className="font-serif text-[22px] leading-[1.25] text-parchment mb-3 relative z-[2]">{title}</h3>
+      <p className="text-sm leading-[1.7] text-muted font-light relative z-[2]">{desc}</p>
     </div>
   );
 }
