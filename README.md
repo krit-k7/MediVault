@@ -151,7 +151,8 @@ This is the same flow described in the [Inter-Contract Calls](#-inter-contract-c
 ## 📸 Platform Screenshots
 
 ### Home
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/72e84809-a2e0-4358-a55c-df2a1ed4d015" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/755ab438-c824-4a25-8acb-14fdff006101" />
+
 
 
 
