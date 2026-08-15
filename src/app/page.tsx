@@ -101,7 +101,9 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col bg-obsidian">
+    <div className="relative isolate flex flex-col bg-obsidian">
+      <AmbientField />
+
       {/* TOPBAR */}
       <nav className="sticky top-0 z-[100] bg-obsidian/90 backdrop-blur-md flex items-center justify-between px-6 md:px-10 h-16 border-b border-line">
         <div className="flex items-center gap-2.5">
@@ -217,7 +219,7 @@ export default function Home() {
       </section>
 
       {/* TICKER */}
-      <div className="bg-charcoal py-3 overflow-hidden border-b border-line whitespace-nowrap reveal">
+      <div className="bg-charcoal/90 py-3 overflow-hidden border-b border-line whitespace-nowrap reveal">
         <div className="inline-flex gap-0 animate-ticker">
           {tickerItems.map((item, i) => (
             <div key={i} className="font-mono-plex text-[11px] font-medium tracking-[3px] uppercase text-gold-soft px-10 flex items-center gap-4 after:content-['\2726'] after:text-gold-dim after:text-[9px]">
@@ -228,7 +230,7 @@ export default function Home() {
       </div>
 
       {/* FEATURES */}
-      <section className="px-6 py-28 md:px-20 bg-obsidian relative overflow-hidden" id="features">
+      <section className="px-6 py-28 md:px-20 bg-obsidian/90 relative overflow-hidden" id="features">
         <div className="glow-orb w-[500px] h-[500px] bg-gold/5 top-0 right-0" />
 
         <div className="flex flex-col md:flex-row items-end justify-between mb-10 border-b border-line pb-10 reveal">
@@ -283,7 +285,7 @@ export default function Home() {
       </section>
 
       {/* STATS RIBBON */}
-      <section ref={statsRef} className="bg-charcoal grid grid-cols-2 md:grid-cols-4 border-y border-line" id="stats">
+      <section ref={statsRef} className="bg-charcoal/85 grid grid-cols-2 md:grid-cols-4 border-y border-line" id="stats">
         <StatBlock index={0} val={counts.records} label="Records Stored" />
         <StatBlock index={1} val={counts.patients} label="Active Patients" />
         <StatBlock index={2} val={counts.doctors} label="Verified Doctors" />
@@ -291,7 +293,7 @@ export default function Home() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="px-6 py-28 md:px-20 bg-obsidian relative overflow-hidden" id="how">
+      <section className="px-6 py-28 md:px-20 bg-obsidian/90 relative overflow-hidden" id="how">
         <div className="flex flex-col md:flex-row items-end justify-between mb-10 border-b border-line pb-10 reveal">
           <div className="badge-pill mb-6 md:mb-0">02 &middot; Process</div>
           <div className="flex-1 md:pl-10">
@@ -344,7 +346,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="relative bg-charcoal px-6 py-28 md:px-20 grid md:grid-cols-2 border-t border-line content-center items-center gap-16 overflow-hidden">
+      <section className="relative bg-charcoal/85 px-6 py-28 md:px-20 grid md:grid-cols-2 border-t border-line content-center items-center gap-16 overflow-hidden">
         <div className="glow-orb w-[400px] h-[400px] bg-gold/10 -bottom-32 -left-20" />
         <h2 className="relative z-[2] font-serif text-[46px] md:text-[64px] leading-[1.1] text-parchment reveal">
           Own your <em className="italic text-gold-soft">medical</em> future
@@ -360,13 +362,59 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-obsidian px-6 md:px-20 py-10 flex flex-col md:flex-row items-center justify-between border-t border-line gap-6">
+      <footer className="bg-obsidian/95 px-6 md:px-20 py-10 flex flex-col md:flex-row items-center justify-between border-t border-line gap-6">
         <div className="flex items-center gap-2.5">
           <CircleDot className="w-5 h-5 text-gold" strokeWidth={1.5} />
           <span className="font-mono-plex text-[13px] tracking-[3px] text-parchment">MEDIVAULT</span>
         </div>
         <div className="font-mono-plex text-[10px] tracking-[2px] uppercase text-muted-dim">© 2026 MediVault Protocol. Decentralised. Open Source.</div>
       </footer>
+    </div>
+  );
+}
+
+function AmbientField() {
+  const stars = [
+    { top: "8%", left: "12%", size: 2, delay: "0s" },
+    { top: "15%", left: "78%", size: 1.5, delay: "0.6s" },
+    { top: "22%", left: "34%", size: 1.5, delay: "1.2s" },
+    { top: "30%", left: "90%", size: 2, delay: "1.8s" },
+    { top: "38%", left: "6%", size: 1.5, delay: "2.4s" },
+    { top: "44%", left: "58%", size: 2, delay: "0.3s" },
+    { top: "52%", left: "22%", size: 1.5, delay: "1.5s" },
+    { top: "60%", left: "82%", size: 1.5, delay: "2.1s" },
+    { top: "68%", left: "40%", size: 2, delay: "0.9s" },
+    { top: "74%", left: "12%", size: 1.5, delay: "1.8s" },
+    { top: "80%", left: "68%", size: 2, delay: "0.4s" },
+    { top: "88%", left: "30%", size: 1.5, delay: "2.7s" },
+    { top: "18%", left: "50%", size: 1.5, delay: "1s" },
+    { top: "56%", left: "94%", size: 1.5, delay: "1.6s" },
+    { top: "92%", left: "82%", size: 2, delay: "0.7s" },
+    { top: "10%", left: "62%", size: 1.5, delay: "2.2s" },
+  ];
+
+  return (
+    <div className="ambient-field" aria-hidden="true">
+      <div className="ambient-drift animate-nebula-1 w-[520px] h-[520px] bg-gold/[0.05] -top-40 left-[10%]" />
+      <div className="ambient-drift animate-nebula-2 w-[420px] h-[420px] bg-gold/[0.04] top-[55%] right-[5%]" />
+
+      {stars.map((s, i) => (
+        <span
+          key={i}
+          className="ambient-star animate-star-twinkle"
+          style={{
+            top: s.top,
+            left: s.left,
+            width: `${s.size}px`,
+            height: `${s.size}px`,
+            animationDelay: s.delay,
+          }}
+        />
+      ))}
+
+      <div className="comet animate-comet-1" style={{ top: "6%", left: "0%" }} />
+      <div className="comet animate-comet-2" style={{ top: "28%", left: "-4%" }} />
+      <div className="comet animate-comet-3" style={{ top: "48%", left: "-2%" }} />
     </div>
   );
 }
