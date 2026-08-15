@@ -229,3 +229,26 @@ body::before {
   animation-play-state: paused;
   transform: translateY(-4px) scale(1.12) rotate(0deg);
 }
+
+/* ---------- Scroll-triggered reveal ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(44px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
