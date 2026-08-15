@@ -1,7 +1,7 @@
 <div align="center">
 <img width="100" height="100" alt="image" src="https://github.com/user-attachments/assets/d976a843-eed6-4f76-a4fc-9e2041e46bf9" />
 
-#  MediChain
+#  MediVault
 ### Decentralized Electronic Health Records & Telemedicine Platform
 
 **Built on Stellar / Soroban** — giving patients true data sovereignty and giving doctors fast, permissioned access.
@@ -58,7 +58,7 @@ https://stellar.expert/explorer/testnet/contract/CCEQ5H7S27TELBHNE7AVHSLK3KXCJHD
 
 ## 🧬 Overview
 
-**MediChain** is a fully decentralized Electronic Health Records (EHR) and Telemedicine platform built on the **Stellar/Soroban** blockchain. It ensures **data sovereignty for patients** — they own and control who sees their medical history — while giving **doctors** an intuitive, permissioned way to access records and provide care.
+**MediVault** is a fully decentralized Electronic Health Records (EHR) and Telemedicine platform built on the **Stellar/Soroban** blockchain. It ensures **data sovereignty for patients** — they own and control who sees their medical history — while giving **doctors** an intuitive, permissioned way to access records and provide care.
 
 At its core, MediChain solves a real problem with traditional EHR systems: centralized databases controlled by hospitals or third parties, where patients have little say over who accesses their sensitive data. By putting access control on-chain via Soroban smart contracts, every grant, revoke, and record upload is transparent, auditable, and owned by the patient.
 
