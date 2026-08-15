@@ -342,6 +342,125 @@ body::before {
   100% { left: 130%; }
 }
 
+/* ---------- Features: spotlight panel ---------- */
+
+.spotlight-panel {
+  position: relative;
+  overflow: hidden;
+}
+.spotlight-panel::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: -10%;
+  width: 50%;
+  height: 160%;
+  background: radial-gradient(circle, rgba(212, 169, 78, 0.14), transparent 70%);
+  pointer-events: none;
+}
+
+.mini-ring {
+  border: 1px solid var(--color-gold-glow);
+  border-radius: 9999px;
+}
+@keyframes miniRingSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.animate-mini-ring { animation: miniRingSpin 14s linear infinite; }
+.animate-mini-ring-reverse { animation: miniRingSpin 10s linear infinite reverse; }
+
+/* ---------- Feature card tag chips + draw-in underline ---------- */
+
+.feature-tag {
+  font-family: var(--font-mono-plex);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-gold-soft);
+  border: 1px solid var(--color-line-strong);
+  border-radius: 9999px;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+
+.feature-underline {
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+}
+.feature-underline.reveal {
+  opacity: 1;
+  transform: none;
+  width: 0%;
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.feature-underline.reveal.is-visible {
+  width: 100%;
+}
+
+/* ---------- How it Works: vertical flow timeline ---------- */
+
+.timeline-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  transform-origin: top;
+  background: linear-gradient(180deg, var(--color-gold) 0%, rgba(212, 169, 78, 0.15) 55%, transparent 100%);
+  background-size: 100% 200%;
+  animation: timelineFlow 3s linear infinite;
+  pointer-events: none;
+}
+.timeline-line.reveal {
+  opacity: 1;
+  transform: translateX(-50%) scaleY(0);
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.timeline-line.reveal.is-visible {
+  transform: translateX(-50%) scaleY(1);
+}
+@keyframes timelineFlow {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 200%; }
+}
+
+.timeline-node {
+  width: 64px;
+  height: 64px;
+  border-radius: 9999px;
+  border: 1px solid var(--color-gold-dim);
+  background: var(--color-charcoal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 6px var(--color-obsidian);
+}
+
+.step-panel {
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.35s ease, transform 0.35s ease;
+}
+.step-panel::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -20%;
+  width: 200px;
+  height: 200px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(212, 169, 78, 0.18), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.step-panel:hover {
+  border-color: var(--color-gold-soft);
+  transform: translateY(-4px);
+}
+.step-panel:hover::before { opacity: 1; }
+
 /* ---------- Scroll-triggered reveal ---------- */
 
 .reveal {
