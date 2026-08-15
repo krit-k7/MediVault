@@ -13,7 +13,7 @@
 ![Stellar](https://img.shields.io/badge/Stellar-Testnet-7D00FF?logo=stellar)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-[🌐 Live Demo](https://stellar-green-sepia.vercel.app/) · [🎥 Demo Video](https://www.youtube.com/watch?v=UFq0hRb6Gqc) · [📊 User Feedback](https://docs.google.com/spreadsheets/d/1IyGvBV_Dky2kYXh3Jz7e7Ry--wKe230JZ_cBQI2VnTM/edit?gid=248039410#gid=248039410)
+[🌐 Live Demo](https://stellar-green-sepia.vercel.app/) · [🎥 Demo Video](https://www.youtube.com/watch?v=UFq0hRb6Gqc) · [📊 User Feedback](https://docs.google.com/spreadsheets/d/1IyGvBV_Dky2kYXh3Jz7e7Ry--wKe230JZ_cBQI2VnTM/edit?gid=248039410#gid=248039410) · [🔗 Pitch Deck](https://prezi.com/p/x1w0zp9u2cuw/?present=1)
 
 </div>
 
