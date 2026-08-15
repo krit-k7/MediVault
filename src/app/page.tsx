@@ -20,6 +20,10 @@ import {
   ArrowRight,
   Fingerprint,
   Database,
+  ShieldCheck,
+  FileLock2,
+  HeartPulse,
+  KeyRound,
 } from "lucide-react";
 
 export default function Home() {
@@ -160,51 +164,61 @@ export default function Home() {
             </div>
           </div>
 
+          {/* ===== VAULT CORE — hero visual ===== */}
           <div className="reveal" style={{ transitionDelay: "0.25s" }}>
-          <div className="relative flex items-center justify-center min-h-[420px] animate-float">
-            {/* ambient glow */}
-            <div className="absolute w-[460px] h-[460px] rounded-full bg-gold/10 blur-3xl" />
+            <div className="relative flex items-center justify-center min-h-[460px] [perspective:1400px]">
+              {/* ambient glow */}
+              <div className="absolute w-[480px] h-[480px] rounded-full bg-gold/10 blur-3xl animate-pulse-glow" />
 
-            {/* floating particles */}
-            <span className="absolute w-1.5 h-1.5 rounded-full bg-gold/70 shadow-[0_0_8px_2px_rgba(212,169,78,0.6)] top-[14%] left-[10%] animate-particle" style={{ animationDelay: "0s" }} />
-            <span className="absolute w-1 h-1 rounded-full bg-gold/60 shadow-[0_0_6px_2px_rgba(212,169,78,0.5)] top-[72%] left-[6%] animate-particle" style={{ animationDelay: "1.4s" }} />
-            <span className="absolute w-1.5 h-1.5 rounded-full bg-gold/70 shadow-[0_0_8px_2px_rgba(212,169,78,0.6)] top-[18%] right-[4%] animate-particle" style={{ animationDelay: "2.6s" }} />
-            <span className="absolute w-1 h-1 rounded-full bg-gold/60 shadow-[0_0_6px_2px_rgba(212,169,78,0.5)] top-[80%] right-[10%] animate-particle" style={{ animationDelay: "3.8s" }} />
+              {/* radar sweep */}
+              <div
+                className="absolute w-[430px] h-[430px] rounded-full animate-radar-sweep"
+                style={{ background: "conic-gradient(from 0deg, transparent 0deg, rgba(212,169,78,0.4) 20deg, transparent 55deg)" }}
+              />
 
-            {/* orbit ring 1 — outer, slow */}
-            <div className="absolute w-[440px] h-[440px] border border-gold/10 rounded-full animate-ring">
-              <div className="absolute w-1.5 h-1.5 bg-gold rounded-full top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-[0_0_16px_#D4A94E]" />
-              <div className="absolute w-9 h-9 rounded-full border border-gold/40 bg-obsidian/90 flex items-center justify-center bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 animate-ring-counter-slow">
-                <Fingerprint className="w-4 h-4 text-gold-soft" strokeWidth={1.5} />
+              {/* hex rings — three layers, opposite spins */}
+              <div className="absolute w-[400px] h-[400px] hex-ring hex-ring-outer animate-hex-spin" />
+              <div className="absolute w-[300px] h-[300px] hex-ring hex-ring-mid animate-hex-spin-reverse" />
+              <div className="absolute w-[210px] h-[210px] hex-ring hex-ring-inner animate-hex-spin-fast" />
+
+              {/* rising data particles */}
+              <span className="absolute w-px h-10 bg-gradient-to-t from-gold/0 via-gold/60 to-gold/0 top-[70%] left-[30%] animate-data-rise" style={{ animationDelay: "0s" }} />
+              <span className="absolute w-px h-8 bg-gradient-to-t from-gold/0 via-gold/50 to-gold/0 top-[75%] left-[62%] animate-data-rise" style={{ animationDelay: "1.5s" }} />
+              <span className="absolute w-px h-12 bg-gradient-to-t from-gold/0 via-gold/60 to-gold/0 top-[68%] left-[46%] animate-data-rise" style={{ animationDelay: "3s" }} />
+
+              {/* floating icon shards — each drifts its own independent path */}
+              <div className="icon-shard absolute top-[4%] left-[10%] animate-drift-a">
+                <Fingerprint className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
               </div>
-            </div>
-
-            {/* orbit ring 2 — mid, reverse */}
-            <div className="absolute w-[320px] h-[320px] border border-gold/15 rounded-full animate-ring-reverse">
-              <div className="absolute w-1.5 h-1.5 bg-gold rounded-full top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-[0_0_16px_#D4A94E]" />
-              <div className="absolute w-9 h-9 rounded-full border border-gold/40 bg-obsidian/90 flex items-center justify-center top-1/2 -right-4 -translate-y-1/2 animate-ring-counter-mid">
-                <Database className="w-4 h-4 text-gold-soft" strokeWidth={1.5} />
+              <div className="icon-shard absolute top-[8%] right-[4%] animate-drift-b">
+                <ShieldCheck className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
               </div>
-            </div>
-
-            {/* orbit ring 3 — inner, fast */}
-            <div className="absolute w-[220px] h-[220px] border border-gold/25 rounded-full animate-ring-fast">
-              <div className="absolute w-1.5 h-1.5 bg-gold rounded-full top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-[0_0_16px_#D4A94E]" />
-              <div className="absolute w-8 h-8 rounded-full border border-gold/40 bg-obsidian/90 flex items-center justify-center top-1/2 -left-4 -translate-y-1/2 animate-ring-counter-fast">
-                <Lock className="w-3.5 h-3.5 text-gold-soft" strokeWidth={1.5} />
+              <div className="icon-shard absolute bottom-[10%] left-[2%] animate-drift-c">
+                <FileLock2 className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
               </div>
-            </div>
-
-            {/* center panel */}
-            <div className="relative z-[5] panel p-10 text-center w-[280px] backdrop-blur-sm animate-icon-pulse">
-              <div className="w-14 h-14 rounded-full border border-gold/40 bg-gold/10 mx-auto mb-5 flex items-center justify-center">
-                <CircleDot className="w-6 h-6 text-gold" strokeWidth={1.5} />
+              <div className="icon-shard absolute bottom-[16%] right-[0%] animate-drift-d">
+                <HeartPulse className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
               </div>
-              <div className="font-serif text-[24px] text-parchment mb-2">MediVault</div>
-              <div className="font-mono-plex text-[10px] text-gold-soft tracking-[2px] uppercase opacity-90">Secured &middot; Decentralised &middot; Yours</div>
+              <div className="icon-shard absolute top-[46%] -left-[8%] animate-drift-e">
+                <Database className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
+              </div>
+              <div className="icon-shard absolute top-[42%] -right-[10%] animate-drift-f">
+                <KeyRound className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
+              </div>
+
+              {/* center vault core — 3D wobble + glass sheen */}
+              <div className="relative z-[5] animate-vault-rotate">
+                <div className="vault-core-panel panel p-10 text-center w-[280px] backdrop-blur-sm animate-icon-pulse">
+                  <div className="w-14 h-14 rounded-full border border-gold/40 bg-gold/10 mx-auto mb-5 flex items-center justify-center relative z-[2]">
+                    <Lock className="w-6 h-6 text-gold" strokeWidth={1.5} />
+                  </div>
+                  <div className="font-serif text-[24px] text-parchment mb-2 relative z-[2]">MediVault</div>
+                  <div className="font-mono-plex text-[10px] text-gold-soft tracking-[2px] uppercase opacity-90 relative z-[2]">Secured &middot; Decentralised &middot; Yours</div>
+                </div>
+              </div>
             </div>
           </div>
-          </div>
+          {/* ===== /VAULT CORE ===== */}
         </div>
       </section>
 
