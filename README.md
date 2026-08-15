@@ -68,6 +68,7 @@ At its core, MediChain solves a real problem with traditional EHR systems: centr
 | Resource | Link |
 |---|---|
 | 🚀 Live App | [stellar-green-sepia.vercel.app](https://stellar-green-sepia.vercel.app/) |
+| 🔗 Pitch Deck | [View Presentation](https://prezi.com/p/x1w0zp9u2cuw/?present=1) |
 | 🎥 Demo Video | [Watch on YouTube](https://www.youtube.com/watch?v=UFq0hRb6Gqc) |
 | ⚙️ CI Pipeline | [GitHub Actions](https://github.com/krit-k7/Stellar-Green/actions/workflows/ci.yml) |
 | 📊 User Feedback | [Visit Link](https://docs.google.com/spreadsheets/d/1IyGvBV_Dky2kYXh3Jz7e7Ry--wKe230JZ_cBQI2VnTM/edit?gid=248039410#gid=248039410) |
