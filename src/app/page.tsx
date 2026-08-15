@@ -68,6 +68,25 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  // Scroll-triggered reveal: fade + slide up any element with class "reveal"
+  useEffect(() => {
+    const revealEls = document.querySelectorAll<HTMLElement>(".reveal");
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+    );
+
+    revealEls.forEach((el) => revealObserver.observe(el));
+    return () => revealObserver.disconnect();
+  }, []);
+
   const tickerItems = [
     "Decentralised Storage", "IPFS Pinned", "Freighter Auth",
     "Zero Knowledge", "Open Protocol", "Immutable Records",
@@ -107,18 +126,18 @@ export default function Home() {
 
         <div className="relative z-[2] grid lg:grid-cols-[1.1fr_0.9fr] gap-10 px-6 md:px-20 pt-20 pb-16 lg:pt-28 lg:pb-24 items-center min-h-[calc(100vh-64px)]">
           <div>
-            <div className="badge-pill mb-8">
+            <div className="badge-pill mb-8 reveal" style={{ transitionDelay: "0s" }}>
               <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse-glow" />
               Stellar &middot; Soroban &middot; Patient-Owned
             </div>
-            <h1 className="font-serif text-[clamp(44px,6.2vw,84px)] leading-[1.05] text-parchment mb-8 max-w-[720px]">
+            <h1 className="font-serif text-[clamp(44px,6.2vw,84px)] leading-[1.05] text-parchment mb-8 max-w-[720px] reveal" style={{ transitionDelay: "0.1s" }}>
               Your health, <em className="italic text-gold-soft">confidential</em> on chain.
             </h1>
-            <p className="text-lg leading-[1.75] text-muted max-w-[480px] mb-12 font-light">
+            <p className="text-lg leading-[1.75] text-muted max-w-[480px] mb-12 font-light reveal" style={{ transitionDelay: "0.2s" }}>
               MediVault stores your medical records on IPFS and anchors access rights to the blockchain.
               No hospital middlemen, no data breaches — <span className="text-parchment">just you and your records</span>, secured by cryptography.
             </p>
-            <div className="flex flex-wrap gap-4 items-center">
+            <div className="flex flex-wrap gap-4 items-center reveal" style={{ transitionDelay: "0.3s" }}>
               <Link
                 href={address ? "/dashboard" : "#"}
                 onClick={(e) => !address && (e.preventDefault(), connect())}
@@ -132,7 +151,7 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="hidden md:flex items-center gap-8 mt-16 pt-8 border-t border-line font-mono-plex text-[10px] tracking-[1.5px] text-muted-dim uppercase">
+            <div className="hidden md:flex items-center gap-8 mt-16 pt-8 border-t border-line font-mono-plex text-[10px] tracking-[1.5px] text-muted-dim uppercase reveal" style={{ transitionDelay: "0.4s" }}>
               <div><span className="text-muted">Contract</span> <span className="text-gold-soft">CBG5D...GW5N</span></div>
               <div className="w-px h-3 bg-line-strong" />
               <div><span className="text-muted">Network</span> <span className="text-gold-soft">Testnet &middot; Live</span></div>
@@ -141,6 +160,7 @@ export default function Home() {
             </div>
           </div>
 
+          <div className="reveal" style={{ transitionDelay: "0.25s" }}>
           <div className="relative flex items-center justify-center min-h-[420px] animate-float">
             {/* ambient glow */}
             <div className="absolute w-[460px] h-[460px] rounded-full bg-gold/10 blur-3xl" />
@@ -184,11 +204,12 @@ export default function Home() {
               <div className="font-mono-plex text-[10px] text-gold-soft tracking-[2px] uppercase opacity-90">Secured &middot; Decentralised &middot; Yours</div>
             </div>
           </div>
+          </div>
         </div>
       </section>
 
       {/* TICKER */}
-      <div className="bg-charcoal py-3 overflow-hidden border-b border-line whitespace-nowrap">
+      <div className="bg-charcoal py-3 overflow-hidden border-b border-line whitespace-nowrap reveal">
         <div className="inline-flex gap-0 animate-ticker">
           {tickerItems.map((item, i) => (
             <div key={i} className="font-mono-plex text-[11px] font-medium tracking-[3px] uppercase text-gold-soft px-10 flex items-center gap-4 after:content-['\2726'] after:text-gold-dim after:text-[9px]">
@@ -200,7 +221,7 @@ export default function Home() {
 
       {/* FEATURES */}
       <section className="px-6 py-28 md:px-20 bg-obsidian" id="features">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-16 border-b border-line pb-10">
+        <div className="flex flex-col md:flex-row items-end justify-between mb-16 border-b border-line pb-10 reveal">
           <div className="badge-pill mb-6 md:mb-0">01 &middot; Core Capabilities</div>
           <div className="flex-1 md:pl-10">
             <div className="font-serif text-[42px] md:text-[56px] leading-[1.05] text-parchment">Why <em className="italic text-gold-soft">MediVault</em></div>
@@ -219,15 +240,15 @@ export default function Home() {
 
       {/* STATS RIBBON */}
       <section ref={statsRef} className="bg-charcoal grid grid-cols-2 md:grid-cols-4 border-y border-line" id="stats">
-        <StatBlock val={counts.records} label="Records Stored" />
-        <StatBlock val={counts.patients} label="Active Patients" />
-        <StatBlock val={counts.doctors} label="Verified Doctors" />
-        <StatBlock val={counts.uptime} label="% Uptime" />
+        <StatBlock index={0} val={counts.records} label="Records Stored" />
+        <StatBlock index={1} val={counts.patients} label="Active Patients" />
+        <StatBlock index={2} val={counts.doctors} label="Verified Doctors" />
+        <StatBlock index={3} val={counts.uptime} label="% Uptime" />
       </section>
 
       {/* HOW IT WORKS */}
       <section className="px-6 py-28 md:px-20 bg-obsidian" id="how">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-16 border-b border-line pb-10">
+        <div className="flex flex-col md:flex-row items-end justify-between mb-16 border-b border-line pb-10 reveal">
           <div className="badge-pill mb-6 md:mb-0">02 &middot; Process</div>
           <div className="flex-1 md:pl-10">
             <div className="font-serif text-[42px] md:text-[56px] leading-[1.05] text-parchment">How it <em className="italic text-gold-soft">works</em></div>
@@ -235,20 +256,20 @@ export default function Home() {
         </div>
 
         <div className="grid md:grid-cols-4 gap-5">
-          <StepItem n="1" title="Connect Wallet" desc="Authenticate with your wallet — no account creation needed." Icon={Wallet} arrow />
-          <StepItem n="2" title="Upload Records" desc="Drag & drop your medical files. They're encrypted and pinned to IPFS instantly." Icon={UploadCloud} arrow />
-          <StepItem n="3" title="Grant Access" desc="Share your record access with doctors using their wallet address. Full control." Icon={UserCheck} arrow />
-          <StepItem n="4" title="Revoke Anytime" desc="Remove access in seconds. The blockchain enforces it — no waiting, no disputes." Icon={ShieldOff} />
+          <StepItem index={0} n="1" title="Connect Wallet" desc="Authenticate with your wallet — no account creation needed." Icon={Wallet} arrow />
+          <StepItem index={1} n="2" title="Upload Records" desc="Drag & drop your medical files. They're encrypted and pinned to IPFS instantly." Icon={UploadCloud} arrow />
+          <StepItem index={2} n="3" title="Grant Access" desc="Share your record access with doctors using their wallet address. Full control." Icon={UserCheck} arrow />
+          <StepItem index={3} n="4" title="Revoke Anytime" desc="Remove access in seconds. The blockchain enforces it — no waiting, no disputes." Icon={ShieldOff} />
         </div>
       </section>
 
       {/* CTA */}
       <section className="relative bg-charcoal px-6 py-28 md:px-20 grid md:grid-cols-2 border-t border-line content-center items-center gap-16 overflow-hidden">
         <div className="glow-orb w-[400px] h-[400px] bg-gold/10 -bottom-32 -left-20" />
-        <h2 className="relative z-[2] font-serif text-[46px] md:text-[64px] leading-[1.1] text-parchment">
+        <h2 className="relative z-[2] font-serif text-[46px] md:text-[64px] leading-[1.1] text-parchment reveal">
           Own your <em className="italic text-gold-soft">medical</em> future
         </h2>
-        <div className="relative z-[2]">
+        <div className="relative z-[2] reveal" style={{ transitionDelay: "0.15s" }}>
           <p className="text-muted text-lg leading-[1.8] font-light mb-10">
             Join thousands of patients who've reclaimed control of their health data. No subscriptions. No corporations. Just you and your records, secured by cryptography.
           </p>
@@ -275,7 +296,8 @@ function FeatureCard({
 }: { num: string; title: string; desc: string; Icon: React.ElementType; big?: boolean; index?: number }) {
   return (
     <div
-      className={`panel feature-card p-10 group flex flex-col ${big ? "md:col-span-1" : ""}`}
+      className={`panel feature-card reveal p-10 group flex flex-col ${big ? "md:col-span-1" : ""}`}
+      style={{ transitionDelay: `${index * 0.12}s` }}
     >
       <div className="font-mono-plex text-[10px] text-muted-dim tracking-[3px] mb-8 relative z-[2]">{num}</div>
       <div
@@ -290,9 +312,12 @@ function FeatureCard({
   );
 }
 
-function StatBlock({ val, label }: { val: number; label: string }) {
+function StatBlock({ val, label, index = 0 }: { val: number; label: string; index?: number }) {
   return (
-    <div className="p-14 border-r border-line last:border-0 text-center relative overflow-hidden group">
+    <div
+      className="p-14 border-r border-line last:border-0 text-center relative overflow-hidden group reveal"
+      style={{ transitionDelay: `${index * 0.12}s` }}
+    >
       <div className="font-serif text-[52px] text-gold leading-none relative z-10">
         {val.toLocaleString()}{label === "% Uptime" ? "" : "+"}
       </div>
@@ -302,10 +327,10 @@ function StatBlock({ val, label }: { val: number; label: string }) {
 }
 
 function StepItem({
-  n, title, desc, Icon, arrow,
-}: { n: string; title: string; desc: string; Icon: React.ElementType; arrow?: boolean }) {
+  n, title, desc, Icon, arrow, index = 0,
+}: { n: string; title: string; desc: string; Icon: React.ElementType; arrow?: boolean; index?: number }) {
   return (
-    <div className="panel p-10 relative">
+    <div className="panel reveal p-10 relative" style={{ transitionDelay: `${index * 0.12}s` }}>
       {arrow && (
         <div className="absolute -right-[26px] top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-obsidian border border-line-strong items-center justify-center z-[5] hidden md:flex">
           <ArrowRight className="w-4 h-4 text-gold-soft" />
