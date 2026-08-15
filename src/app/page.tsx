@@ -18,6 +18,8 @@ import {
   UserCheck,
   ShieldOff,
   ArrowRight,
+  Fingerprint,
+  Database,
 } from "lucide-react";
 
 export default function Home() {
@@ -139,17 +141,42 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative flex items-center justify-center min-h-[380px]">
-            <div className="absolute w-[420px] h-[420px] border border-gold/10 rounded-full animate-ring">
+          <div className="relative flex items-center justify-center min-h-[420px] animate-float">
+            {/* ambient glow */}
+            <div className="absolute w-[460px] h-[460px] rounded-full bg-gold/10 blur-3xl" />
+
+            {/* floating particles */}
+            <span className="absolute w-1.5 h-1.5 rounded-full bg-gold/70 shadow-[0_0_8px_2px_rgba(212,169,78,0.6)] top-[14%] left-[10%] animate-particle" style={{ animationDelay: "0s" }} />
+            <span className="absolute w-1 h-1 rounded-full bg-gold/60 shadow-[0_0_6px_2px_rgba(212,169,78,0.5)] top-[72%] left-[6%] animate-particle" style={{ animationDelay: "1.4s" }} />
+            <span className="absolute w-1.5 h-1.5 rounded-full bg-gold/70 shadow-[0_0_8px_2px_rgba(212,169,78,0.6)] top-[18%] right-[4%] animate-particle" style={{ animationDelay: "2.6s" }} />
+            <span className="absolute w-1 h-1 rounded-full bg-gold/60 shadow-[0_0_6px_2px_rgba(212,169,78,0.5)] top-[80%] right-[10%] animate-particle" style={{ animationDelay: "3.8s" }} />
+
+            {/* orbit ring 1 — outer, slow */}
+            <div className="absolute w-[440px] h-[440px] border border-gold/10 rounded-full animate-ring">
               <div className="absolute w-1.5 h-1.5 bg-gold rounded-full top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-[0_0_16px_#D4A94E]" />
+              <div className="absolute w-9 h-9 rounded-full border border-gold/40 bg-obsidian/90 flex items-center justify-center bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 animate-ring-counter-slow">
+                <Fingerprint className="w-4 h-4 text-gold-soft" strokeWidth={1.5} />
+              </div>
             </div>
+
+            {/* orbit ring 2 — mid, reverse */}
             <div className="absolute w-[320px] h-[320px] border border-gold/15 rounded-full animate-ring-reverse">
               <div className="absolute w-1.5 h-1.5 bg-gold rounded-full top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-[0_0_16px_#D4A94E]" />
+              <div className="absolute w-9 h-9 rounded-full border border-gold/40 bg-obsidian/90 flex items-center justify-center top-1/2 -right-4 -translate-y-1/2 animate-ring-counter-mid">
+                <Database className="w-4 h-4 text-gold-soft" strokeWidth={1.5} />
+              </div>
             </div>
+
+            {/* orbit ring 3 — inner, fast */}
             <div className="absolute w-[220px] h-[220px] border border-gold/25 rounded-full animate-ring-fast">
               <div className="absolute w-1.5 h-1.5 bg-gold rounded-full top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-[0_0_16px_#D4A94E]" />
+              <div className="absolute w-8 h-8 rounded-full border border-gold/40 bg-obsidian/90 flex items-center justify-center top-1/2 -left-4 -translate-y-1/2 animate-ring-counter-fast">
+                <Lock className="w-3.5 h-3.5 text-gold-soft" strokeWidth={1.5} />
+              </div>
             </div>
-            <div className="relative z-[5] panel p-10 text-center w-[280px] backdrop-blur-sm">
+
+            {/* center panel */}
+            <div className="relative z-[5] panel p-10 text-center w-[280px] backdrop-blur-sm animate-icon-pulse">
               <div className="w-14 h-14 rounded-full border border-gold/40 bg-gold/10 mx-auto mb-5 flex items-center justify-center">
                 <CircleDot className="w-6 h-6 text-gold" strokeWidth={1.5} />
               </div>
