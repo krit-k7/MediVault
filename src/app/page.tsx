@@ -167,26 +167,21 @@ export default function Home() {
           {/* ===== VAULT CORE — hero visual ===== */}
           <div className="reveal" style={{ transitionDelay: "0.25s" }}>
             <div className="relative flex items-center justify-center min-h-[460px] [perspective:1400px]">
-              {/* ambient glow */}
               <div className="absolute w-[480px] h-[480px] rounded-full bg-gold/10 blur-3xl animate-pulse-glow" />
 
-              {/* radar sweep */}
               <div
                 className="absolute w-[430px] h-[430px] rounded-full animate-radar-sweep"
                 style={{ background: "conic-gradient(from 0deg, transparent 0deg, rgba(212,169,78,0.4) 20deg, transparent 55deg)" }}
               />
 
-              {/* hex rings — three layers, opposite spins */}
               <div className="absolute w-[400px] h-[400px] hex-ring hex-ring-outer animate-hex-spin" />
               <div className="absolute w-[300px] h-[300px] hex-ring hex-ring-mid animate-hex-spin-reverse" />
               <div className="absolute w-[210px] h-[210px] hex-ring hex-ring-inner animate-hex-spin-fast" />
 
-              {/* rising data particles */}
               <span className="absolute w-px h-10 bg-gradient-to-t from-gold/0 via-gold/60 to-gold/0 top-[70%] left-[30%] animate-data-rise" style={{ animationDelay: "0s" }} />
               <span className="absolute w-px h-8 bg-gradient-to-t from-gold/0 via-gold/50 to-gold/0 top-[75%] left-[62%] animate-data-rise" style={{ animationDelay: "1.5s" }} />
               <span className="absolute w-px h-12 bg-gradient-to-t from-gold/0 via-gold/60 to-gold/0 top-[68%] left-[46%] animate-data-rise" style={{ animationDelay: "3s" }} />
 
-              {/* floating icon shards — each drifts its own independent path */}
               <div className="icon-shard absolute top-[4%] left-[10%] animate-drift-a">
                 <Fingerprint className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
               </div>
@@ -206,7 +201,6 @@ export default function Home() {
                 <KeyRound className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
               </div>
 
-              {/* center vault core — 3D wobble + glass sheen */}
               <div className="relative z-[5] animate-vault-rotate">
                 <div className="vault-core-panel panel p-10 text-center w-[280px] backdrop-blur-sm animate-icon-pulse">
                   <div className="w-14 h-14 rounded-full border border-gold/40 bg-gold/10 mx-auto mb-5 flex items-center justify-center relative z-[2]">
@@ -234,21 +228,57 @@ export default function Home() {
       </div>
 
       {/* FEATURES */}
-      <section className="px-6 py-28 md:px-20 bg-obsidian" id="features">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-16 border-b border-line pb-10 reveal">
+      <section className="px-6 py-28 md:px-20 bg-obsidian relative overflow-hidden" id="features">
+        <div className="glow-orb w-[500px] h-[500px] bg-gold/5 top-0 right-0" />
+
+        <div className="flex flex-col md:flex-row items-end justify-between mb-10 border-b border-line pb-10 reveal">
           <div className="badge-pill mb-6 md:mb-0">01 &middot; Core Capabilities</div>
           <div className="flex-1 md:pl-10">
             <div className="font-serif text-[42px] md:text-[56px] leading-[1.05] text-parchment">Why <em className="italic text-gold-soft">MediVault</em></div>
           </div>
         </div>
 
+        <p className="reveal max-w-[620px] text-muted text-base leading-[1.8] font-light mb-20" style={{ transitionDelay: "0.1s" }}>
+          Six pillars hold the protocol together — from the moment a file leaves your device to the moment
+          a doctor requests access. Every layer is built to remove trust from the equation and replace it with proof.
+        </p>
+
+        {/* SPOTLIGHT PANEL */}
+        <div className="spotlight-panel panel grid md:grid-cols-[0.55fr_0.45fr] gap-10 p-10 md:p-14 mb-20 reveal items-center">
+          <div>
+            <div className="badge-pill mb-6">Security Model</div>
+            <h3 className="font-serif text-[30px] md:text-[38px] leading-[1.15] text-parchment mb-5">
+              One vault. <em className="italic text-gold-soft">Total control.</em>
+            </h3>
+            <p className="text-muted text-[15px] leading-[1.8] font-light mb-8">
+              Files are encrypted client-side before they ever leave your browser, pinned across the IPFS
+              network, and referenced on Soroban through a single access-control contract only you can update.
+              Nothing sits on a company server. Nothing waits on a support ticket.
+            </p>
+            <div className="flex flex-wrap gap-2.5">
+              {["Client-Side Encryption", "IPFS Distribution", "Soroban Access Control", "No Central Server"].map((t) => (
+                <span key={t} className="feature-tag">{t}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative flex items-center justify-center h-[240px] md:h-[280px]">
+            <div className="absolute w-[220px] h-[220px] rounded-full bg-gold/10 blur-2xl" />
+            <div className="absolute w-[210px] h-[210px] mini-ring animate-mini-ring opacity-40" />
+            <div className="absolute w-[150px] h-[150px] mini-ring animate-mini-ring-reverse opacity-60" />
+            <div className="relative z-[2] w-20 h-20 rounded-full border border-gold/40 bg-charcoal flex items-center justify-center animate-icon-pulse">
+              <Lock className="w-8 h-8 text-gold" strokeWidth={1.5} />
+            </div>
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-3 gap-5">
-          <FeatureCard index={0} num="F — 001" title="End-to-End Encrypted Storage" desc="Every file is encrypted before it touches IPFS. Your private key, your data. Not even MediVault can read your records without your explicit permission." Icon={Lock} big />
-          <FeatureCard index={1} num="F — 002" title="Immutable Audit Trail" desc="Every access event is logged on-chain. Tamper-proof history forever." Icon={Link2} />
-          <FeatureCard index={2} num="F — 003" title="Granular Doctor Access" desc="Grant or revoke per-doctor access in seconds, on your terms." Icon={Eye} />
-          <FeatureCard index={3} num="F — 004" title="IPFS Pinned Files" desc="Records survive server outages — distributed across the globe permanently." Icon={FileText} />
-          <FeatureCard index={4} num="F — 005" title="Instant Wallet Auth" desc="No username, no password. Just sign with your wallet." Icon={Zap} />
-          <FeatureCard index={5} num="F — 006" title="Universal Portability" desc="Access from any device, anywhere. No vendor lock-in, ever." Icon={Globe2} />
+          <FeatureCard index={0} num="F — 001" title="End-to-End Encrypted Storage" desc="Every file is encrypted before it touches IPFS. Your private key, your data. Not even MediVault can read your records without your explicit permission." Icon={Lock} tags={["AES-256", "Client-Side"]} />
+          <FeatureCard index={1} num="F — 002" title="Immutable Audit Trail" desc="Every access event is logged on-chain. Tamper-proof history forever." Icon={Link2} tags={["On-Chain Logs"]} />
+          <FeatureCard index={2} num="F — 003" title="Granular Doctor Access" desc="Grant or revoke per-doctor access in seconds, on your terms." Icon={Eye} tags={["Per-Doctor Keys"]} />
+          <FeatureCard index={3} num="F — 004" title="IPFS Pinned Files" desc="Records survive server outages — distributed across the globe permanently." Icon={FileText} tags={["Distributed"]} />
+          <FeatureCard index={4} num="F — 005" title="Instant Wallet Auth" desc="No username, no password. Just sign with your wallet." Icon={Zap} tags={["Freighter"]} />
+          <FeatureCard index={5} num="F — 006" title="Universal Portability" desc="Access from any device, anywhere. No vendor lock-in, ever." Icon={Globe2} tags={["Cross-Device"]} />
         </div>
       </section>
 
@@ -261,19 +291,55 @@ export default function Home() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="px-6 py-28 md:px-20 bg-obsidian" id="how">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-16 border-b border-line pb-10 reveal">
+      <section className="px-6 py-28 md:px-20 bg-obsidian relative overflow-hidden" id="how">
+        <div className="flex flex-col md:flex-row items-end justify-between mb-10 border-b border-line pb-10 reveal">
           <div className="badge-pill mb-6 md:mb-0">02 &middot; Process</div>
           <div className="flex-1 md:pl-10">
             <div className="font-serif text-[42px] md:text-[56px] leading-[1.05] text-parchment">How it <em className="italic text-gold-soft">works</em></div>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-5">
-          <StepItem index={0} n="1" title="Connect Wallet" desc="Authenticate with your wallet — no account creation needed." Icon={Wallet} arrow />
-          <StepItem index={1} n="2" title="Upload Records" desc="Drag & drop your medical files. They're encrypted and pinned to IPFS instantly." Icon={UploadCloud} arrow />
-          <StepItem index={2} n="3" title="Grant Access" desc="Share your record access with doctors using their wallet address. Full control." Icon={UserCheck} arrow />
-          <StepItem index={3} n="4" title="Revoke Anytime" desc="Remove access in seconds. The blockchain enforces it — no waiting, no disputes." Icon={ShieldOff} />
+        <p className="reveal max-w-[600px] text-muted text-base leading-[1.8] font-light mb-24" style={{ transitionDelay: "0.1s" }}>
+          Four steps, no intermediaries. Each one is enforced by the contract itself — not by a team
+          watching a dashboard.
+        </p>
+
+        <div className="relative max-w-[900px] mx-auto">
+          <div className="timeline-line reveal hidden md:block" />
+
+          <div className="flex flex-col gap-20 md:gap-28">
+            <TimelineStep
+              index={0} n="1" side="left" title="Connect Wallet"
+              desc="Authenticate with your wallet — no email, no password, no account creation. Your wallet address is your identity on MediVault."
+              Icon={Wallet}
+              tags={["Freighter", "Instant"]}
+            />
+            <TimelineStep
+              index={1} n="2" side="right" title="Upload Records"
+              desc="Drag & drop your medical files. They're encrypted in your browser before upload, then pinned to IPFS and referenced on-chain — instantly."
+              Icon={UploadCloud}
+              tags={["Client-Side Encryption", "IPFS"]}
+            />
+            <TimelineStep
+              index={2} n="3" side="left" title="Grant Access"
+              desc="Share record access with a doctor using nothing but their wallet address. They see exactly what you allow — nothing more."
+              Icon={UserCheck}
+              tags={["Per-Record", "Wallet-Based"]}
+            />
+            <TimelineStep
+              index={3} n="4" side="right" title="Revoke Anytime"
+              desc="Remove access in seconds. The smart contract enforces it immediately — no waiting on a hospital, no disputes, no exceptions."
+              Icon={ShieldOff}
+              tags={["On-Chain Enforcement"]}
+            />
+          </div>
+
+          <div className="reveal mt-24 md:mt-32 text-center" style={{ transitionDelay: "0.5s" }}>
+            <div className="badge-pill mx-auto mb-6" style={{ margin: "0 auto 24px" }}>End-to-End</div>
+            <p className="font-serif text-[22px] md:text-[28px] text-parchment italic max-w-[560px] mx-auto leading-[1.4]">
+              No backend ever holds your keys. The contract is the only authority.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -306,14 +372,17 @@ export default function Home() {
 }
 
 function FeatureCard({
-  num, title, desc, Icon, big = false, index = 0,
-}: { num: string; title: string; desc: string; Icon: React.ElementType; big?: boolean; index?: number }) {
+  num, title, desc, Icon, index = 0, tags = [],
+}: { num: string; title: string; desc: string; Icon: React.ElementType; index?: number; tags?: string[] }) {
   return (
     <div
-      className={`panel feature-card reveal p-10 group flex flex-col ${big ? "md:col-span-1" : ""}`}
+      className="panel feature-card reveal p-10 group flex flex-col"
       style={{ transitionDelay: `${index * 0.12}s` }}
     >
-      <div className="font-mono-plex text-[10px] text-muted-dim tracking-[3px] mb-8 relative z-[2]">{num}</div>
+      <div className="flex items-start justify-between mb-8 relative z-[2]">
+        <span className="font-mono-plex text-[10px] text-muted-dim tracking-[3px]">{num}</span>
+        <ArrowRight className="w-3.5 h-3.5 text-muted-dim opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+      </div>
       <div
         className="feature-icon-float w-12 h-12 rounded-lg border border-line-strong flex items-center justify-center mb-6 group-hover:border-gold/50 group-hover:bg-gold/10 relative z-[2]"
         style={{ animationDelay: `${index * 0.35}s` }}
@@ -321,7 +390,13 @@ function FeatureCard({
         <Icon className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
       </div>
       <h3 className="font-serif text-[22px] leading-[1.25] text-parchment mb-3 relative z-[2]">{title}</h3>
-      <p className="text-sm leading-[1.7] text-muted font-light relative z-[2]">{desc}</p>
+      <p className="text-sm leading-[1.7] text-muted font-light mb-6 relative z-[2]">{desc}</p>
+      <div className="feature-underline reveal mb-5 relative z-[2]" style={{ transitionDelay: `${index * 0.12 + 0.3}s` }} />
+      <div className="flex flex-wrap gap-2 relative z-[2] mt-auto">
+        {tags.map((t) => (
+          <span key={t} className="feature-tag">{t}</span>
+        ))}
+      </div>
     </div>
   );
 }
@@ -340,22 +415,41 @@ function StatBlock({ val, label, index = 0 }: { val: number; label: string; inde
   );
 }
 
-function StepItem({
-  n, title, desc, Icon, arrow, index = 0,
-}: { n: string; title: string; desc: string; Icon: React.ElementType; arrow?: boolean; index?: number }) {
+function TimelineStep({
+  n, title, desc, Icon, side, index = 0, tags = [],
+}: { n: string; title: string; desc: string; Icon: React.ElementType; side: "left" | "right"; index?: number; tags?: string[] }) {
+  const isLeft = side === "left";
   return (
-    <div className="panel reveal p-10 relative" style={{ transitionDelay: `${index * 0.12}s` }}>
-      {arrow && (
-        <div className="absolute -right-[26px] top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-obsidian border border-line-strong items-center justify-center z-[5] hidden md:flex">
-          <ArrowRight className="w-4 h-4 text-gold-soft" />
+    <div className="relative grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+      {/* node on the central line */}
+      <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[3]">
+        <div className="timeline-node reveal" style={{ transitionDelay: `${index * 0.15}s` }}>
+          <span className="font-mono-plex text-[13px] text-gold-soft">{n}</span>
         </div>
-      )}
-      <div className="flex items-center justify-between mb-6">
-        <span className="font-mono-plex text-[11px] text-muted-dim tracking-[3px]">STEP {n}</span>
-        <Icon className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
       </div>
-      <h3 className="font-serif text-[20px] text-parchment mb-3">{title}</h3>
-      <p className="text-[13px] leading-[1.7] text-muted font-light">{desc}</p>
+
+      <div className={isLeft ? "md:order-1" : "md:order-2"}>
+        <div
+          className={`step-panel panel p-8 md:p-10 reveal ${isLeft ? "md:mr-10" : "md:ml-10"}`}
+          style={{ transitionDelay: `${index * 0.15 + 0.1}s` }}
+        >
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-11 h-11 rounded-lg border border-line-strong flex items-center justify-center feature-icon-float" style={{ animationDelay: `${index * 0.3}s` }}>
+              <Icon className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
+            </div>
+            <span className="font-mono-plex text-[11px] text-muted-dim tracking-[3px] md:hidden">STEP {n}</span>
+          </div>
+          <h3 className="font-serif text-[24px] text-parchment mb-3">{title}</h3>
+          <p className="text-[14px] leading-[1.8] text-muted font-light mb-6">{desc}</p>
+          <div className="flex flex-wrap gap-2">
+            {tags.map((t) => (
+              <span key={t} className="feature-tag">{t}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className={`hidden md:block ${isLeft ? "md:order-2" : "md:order-1"}`} />
     </div>
   );
 }
