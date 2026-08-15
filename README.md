@@ -1,6 +1,7 @@
 <div align="center">
+<img width="100" height="100" alt="image" src="https://github.com/user-attachments/assets/d976a843-eed6-4f76-a4fc-9e2041e46bf9" />
 
-# 🏥 MediChain
+#  MediChain
 ### Decentralized Electronic Health Records & Telemedicine Platform
 
 **Built on Stellar / Soroban** — giving patients true data sovereignty and giving doctors fast, permissioned access.
