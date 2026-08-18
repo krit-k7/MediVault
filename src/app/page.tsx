@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useStellar } from "@/context/StellarContext";
 import { useRouter } from "next/navigation";
-import EtherealShadow from "@/components/ui/EtherealShadow";
+import ShaderBackground from "@/components/ui/ShaderBackground";
 import {
   CircleDot,
   Lock,
