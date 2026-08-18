@@ -227,18 +227,18 @@ void main(){gl_Position=position;}`;
   return canvasRef;
 };
 
-export const ShaderBackground = ({ opacity = 0.5 }: { opacity?: number }) => {
+export const ShaderBackground = () => {
   const canvasRef = useShaderBackground();
   return (
     <canvas
       ref={canvasRef}
       className="absolute inset-0 w-full h-full object-cover touch-none -z-0"
-      style={{ background: "#08070A", opacity }}
+      style={{ background: "#08070A" }}
     />
   );
 };
 
-// Recolored to MediVault's gold/obsidian palette (#D4A94E accent on #08070A base) — dimmed intensity
+// Recolored to MediVault's gold/obsidian palette (#D4A94E accent on #08070A base)
 const goldShaderSource = `#version 300 es
 precision highp float;
 out vec4 O;
@@ -282,10 +282,10 @@ void main(void) {
     uv+=.1*cos(i*vec2(.1+.01*i, .8)+i*i+T*.5+.1*uv.x);
     vec2 p=uv;
     float d=length(p);
-    col+=.0007/d*(cos(sin(i)*vec3(.3,.9,1.4))*vec3(.83,.66,.31)+vec3(.83,.66,.31));
+    col+=.00125/d*(cos(sin(i)*vec3(.3,.9,1.4))*vec3(.83,.66,.31)+vec3(.83,.66,.31));
     float b=noise(i+p+bg*1.731);
-    col+=.0012*b/length(max(p,vec2(b*p.x*.02,p.y)))*vec3(.83,.66,.31);
-    col=mix(col,vec3(bg*.14,bg*.11,bg*.05),d);
+    col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)))*vec3(.83,.66,.31);
+    col=mix(col,vec3(bg*.21,bg*.165,bg*.075),d);
   }
   O=vec4(col,1);
 }`;
