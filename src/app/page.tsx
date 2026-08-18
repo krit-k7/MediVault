@@ -122,7 +122,12 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-line">
-        <ShaderBackground />
+        <ShaderBackground opacity={0.5} />
+
+        {/* Dark scrim so text stays readable over the shader */}
+        <div className="absolute inset-0 bg-gradient-to-r from-obsidian via-obsidian/70 to-obsidian/20 z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-transparent to-obsidian z-[1]" />
+
         <div className="glow-orb w-[600px] h-[600px] bg-gold/10 -top-40 -right-40" />
         <div className="glow-orb w-[300px] h-[300px] bg-gold/10 top-1/3 -left-32" />
 
@@ -135,7 +140,7 @@ export default function Home() {
             <h1 className="font-serif text-[clamp(44px,6.2vw,84px)] leading-[1.05] text-parchment mb-8 max-w-[720px] reveal" style={{ transitionDelay: "0.1s" }}>
               Your health, <em className="italic text-gold-soft">confidential</em> on chain.
             </h1>
-            <p className="text-lg leading-[1.75] text-muted max-w-[480px] mb-12 font-light reveal" style={{ transitionDelay: "0.2s" }}>
+            <p className="text-lg leading-[1.75] text-parchment/70 max-w-[480px] mb-12 font-light reveal" style={{ transitionDelay: "0.2s" }}>
               MediVault stores your medical records on IPFS and anchors access rights to the blockchain.
               No hospital middlemen, no data breaches — <span className="text-parchment">just you and your records</span>, secured by cryptography.
             </p>
