@@ -207,13 +207,7 @@ export default function Home() {
               </div>
 
               <div className="relative z-[5] animate-vault-rotate">
-                <div className="vault-core-panel panel p-10 text-center w-[280px] backdrop-blur-sm animate-icon-pulse">
-                  <div className="w-14 h-14 rounded-full border border-gold/40 bg-gold/10 mx-auto mb-5 flex items-center justify-center relative z-[2]">
-                    <Lock className="w-6 h-6 text-gold" strokeWidth={1.5} />
-                  </div>
-                  <div className="font-serif text-[24px] text-parchment mb-2 relative z-[2]">MediVault</div>
-                  <div className="font-mono-plex text-[10px] text-gold-soft tracking-[2px] uppercase opacity-90 relative z-[2]">Secured &middot; Decentralised &middot; Yours</div>
-                </div>
+                <VaultCore />
               </div>
             </div>
           </div>
@@ -418,6 +412,71 @@ function AmbientField() {
       <div className="comet animate-comet-1" style={{ top: "6%", left: "0%" }} />
       <div className="comet animate-comet-2" style={{ top: "28%", left: "-4%" }} />
       <div className="comet animate-comet-3" style={{ top: "48%", left: "-2%" }} />
+    </div>
+  );
+}
+
+/**
+ * VaultCore
+ * -----------------------------------------------------------------------
+ * The centerpiece of the hero visual — a circular security dial instead
+ * of a flat text card. A tick-marked ring counter-rotates slowly, a
+ * bright dot sweeps around it like an active scan, and a glass core in
+ * the middle holds the lock icon + brand + live status. Reuses the
+ * existing hex-spin / icon-pulse / blink animations already defined in
+ * globals.css, so no new keyframes are needed.
+ */
+function VaultCore() {
+  const ticks = Array.from({ length: 32 }, (_, i) => {
+    const angle = (i / 32) * Math.PI * 2 - Math.PI / 2;
+    const isMajor = i % 4 === 0;
+    const outer = 118;
+    const inner = isMajor ? 102 : 110;
+    return {
+      x1: 128 + outer * Math.cos(angle),
+      y1: 128 + outer * Math.sin(angle),
+      x2: 128 + inner * Math.cos(angle),
+      y2: 128 + inner * Math.sin(angle),
+      isMajor,
+    };
+  });
+
+  return (
+    <div className="relative w-[256px] h-[256px] flex items-center justify-center">
+      {/* tick-marked dial ring, counter-rotating slowly */}
+      <svg viewBox="0 0 256 256" className="absolute inset-0 w-full h-full animate-hex-spin-reverse">
+        <circle cx="128" cy="128" r="124" fill="none" stroke="rgba(243,238,227,0.14)" strokeWidth="1" />
+        {ticks.map((t, i) => (
+          <line
+            key={i}
+            x1={t.x1}
+            y1={t.y1}
+            x2={t.x2}
+            y2={t.y2}
+            stroke={t.isMajor ? "#D4A94E" : "rgba(212,169,78,0.35)"}
+            strokeWidth={t.isMajor ? 2 : 1}
+            strokeLinecap="round"
+          />
+        ))}
+      </svg>
+
+      {/* bright dot sweeping around the ring like an active scan */}
+      <div className="absolute inset-0 animate-hex-spin">
+        <span className="absolute top-[4px] left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-gold shadow-[0_0_16px_5px_rgba(212,169,78,0.65)]" />
+      </div>
+
+      {/* glass core */}
+      <div className="relative z-[2] w-[188px] h-[188px] rounded-full border border-gold/40 bg-charcoal/95 backdrop-blur-md flex flex-col items-center justify-center overflow-hidden animate-icon-pulse">
+        <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_50%_35%,rgba(212,169,78,0.16),transparent_65%)]" />
+        <div className="relative z-[2] w-14 h-14 rounded-full border border-gold/50 bg-gold/10 flex items-center justify-center mb-4">
+          <Lock className="w-6 h-6 text-gold" strokeWidth={1.5} />
+        </div>
+        <div className="relative z-[2] font-serif text-[22px] text-parchment leading-none">MediVault</div>
+        <div className="relative z-[2] flex items-center gap-1.5 mt-3">
+          <span className="w-1.5 h-1.5 rounded-full bg-success animate-blink" />
+          <span className="font-mono-plex text-[9px] text-gold-soft tracking-[2px] uppercase">Encrypted &middot; Live</span>
+        </div>
+      </div>
     </div>
   );
 }
