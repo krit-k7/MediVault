@@ -122,11 +122,7 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-line">
-        <EtherealShadow
-          colors={{ from: "#0d0b08", mid: "#4d3a0f", to: "#D4A94E" }}
-          intensity={0.35}
-          speed={0.7}
-        />
+        <ShaderBackground />
         <div className="glow-orb w-[600px] h-[600px] bg-gold/10 -top-40 -right-40" />
         <div className="glow-orb w-[300px] h-[300px] bg-gold/10 top-1/3 -left-32" />
 
