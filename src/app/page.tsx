@@ -123,19 +123,26 @@ export default function Home() {
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-line">
         <ShaderBackground />
+
+        {/* Contrast scrim — sits between the shader canvas and the content.
+            Does NOT touch ShaderBackground.tsx, its colors, or its motion —
+            purely darkens the area behind the text so it reads clearly. */}
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-obsidian via-obsidian/75 to-obsidian/10" />
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-obsidian/70 via-transparent to-obsidian/25" />
+
         <div className="glow-orb w-[600px] h-[600px] bg-gold/10 -top-40 -right-40" />
         <div className="glow-orb w-[300px] h-[300px] bg-gold/10 top-1/3 -left-32" />
 
         <div className="relative z-[2] grid lg:grid-cols-[1.1fr_0.9fr] gap-10 px-6 md:px-20 pt-20 pb-16 lg:pt-28 lg:pb-24 items-center min-h-[calc(100vh-64px)]">
           <div>
-            <div className="badge-pill mb-8 reveal" style={{ transitionDelay: "0s" }}>
+            <div className="badge-pill mb-8 reveal !bg-obsidian/80 !border-gold/50 backdrop-blur-md shadow-[0_2px_20px_-4px_rgba(0,0,0,0.6)]" style={{ transitionDelay: "0s" }}>
               <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse-glow" />
               Stellar &middot; Soroban &middot; Patient-Owned
             </div>
-            <h1 className="font-serif text-[clamp(44px,6.2vw,84px)] leading-[1.05] text-parchment mb-8 max-w-[720px] reveal" style={{ transitionDelay: "0.1s" }}>
+            <h1 className="font-serif text-[clamp(44px,6.2vw,84px)] leading-[1.05] text-parchment mb-8 max-w-[720px] reveal drop-shadow-[0_4px_28px_rgba(0,0,0,0.7)]" style={{ transitionDelay: "0.1s" }}>
               Your health, <em className="italic text-gold-soft">confidential</em> on chain.
             </h1>
-            <p className="text-lg leading-[1.75] text-muted max-w-[480px] mb-12 font-light reveal" style={{ transitionDelay: "0.2s" }}>
+            <p className="text-lg leading-[1.75] text-parchment/80 max-w-[480px] mb-12 font-light reveal drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]" style={{ transitionDelay: "0.2s" }}>
               MediVault stores your medical records on IPFS and anchors access rights to the blockchain.
               No hospital middlemen, no data breaches — <span className="text-parchment">just you and your records</span>, secured by cryptography.
             </p>
@@ -148,12 +155,12 @@ export default function Home() {
                 Launch App
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="#how" className="btn-outline">
+              <Link href="#how" className="btn-outline !bg-obsidian/60 backdrop-blur-md">
                 How it Works
               </Link>
             </div>
 
-            <div className="hidden md:flex items-center gap-8 mt-16 pt-8 border-t border-line font-mono-plex text-[10px] tracking-[1.5px] text-muted-dim uppercase reveal" style={{ transitionDelay: "0.4s" }}>
+            <div className="hidden md:flex items-center gap-8 mt-16 pt-8 border-t border-line-strong font-mono-plex text-[10px] tracking-[1.5px] text-muted uppercase reveal bg-obsidian/50 backdrop-blur-md rounded-lg px-4 -mx-4" style={{ transitionDelay: "0.4s" }}>
               <div><span className="text-muted">Contract</span> <span className="text-gold-soft">CBG5D...GW5N</span></div>
               <div className="w-px h-3 bg-line-strong" />
               <div><span className="text-muted">Network</span> <span className="text-gold-soft">Testnet &middot; Live</span></div>
