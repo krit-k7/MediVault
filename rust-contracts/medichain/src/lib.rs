@@ -107,7 +107,7 @@ impl MediChainContract {
             .set(&key, &true);
 
         env.events().publish(
-            (symbol_short!("doctor"), symbol_short!("registered")),
+            (symbol_short!("doctor"), symbol_short!("reg")),
             doctor,
         );
     }
@@ -131,7 +131,7 @@ impl MediChainContract {
             .set(&key, &true);
 
         env.events().publish(
-            (symbol_short!("patient"), symbol_short!("registered")),
+            (symbol_short!("patient"), symbol_short!("reg")),
             patient,
         );
     }

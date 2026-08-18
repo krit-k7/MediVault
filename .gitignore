@@ -46,3 +46,4 @@ next-env.d.ts
 /.soroban/
 /artifacts/
 /cache/
+rust-contracts/medichain/target/

@@ -292,8 +292,8 @@ fn test_token_duplicate_initialization_rejected() {
     let admin1 = Address::generate(&env);
     let admin2 = Address::generate(&env);
 
-    token_client.initialize(&admin1);
-    token_client.initialize(&admin2);
+    token_client.initialize_token(&admin1);
+    token_client.initialize_token(&admin2);
 }
 
 #[test]
@@ -309,7 +309,7 @@ fn test_token_negative_mint_rejected() {
     let admin = Address::generate(&env);
     let user = Address::generate(&env);
 
-    token_client.initialize(&admin);
+    token_client.initialize_token(&admin);
 
     token_client.mint(&user, &-100);
 }
@@ -327,7 +327,7 @@ fn test_token_zero_mint_rejected() {
     let admin = Address::generate(&env);
     let user = Address::generate(&env);
 
-    token_client.initialize(&admin);
+    token_client.initialize_token(&admin);
 
     token_client.mint(&user, &0);
 }
@@ -346,7 +346,7 @@ fn test_token_negative_transfer_rejected() {
     let user1 = Address::generate(&env);
     let user2 = Address::generate(&env);
 
-    token_client.initialize(&admin);
+    token_client.initialize_token(&admin);
     token_client.mint(&user1, &1000);
 
     token_client.transfer(&user1, &user2, &-100);
@@ -366,7 +366,7 @@ fn test_token_zero_transfer_rejected() {
     let user1 = Address::generate(&env);
     let user2 = Address::generate(&env);
 
-    token_client.initialize(&admin);
+    token_client.initialize_token(&admin);
     token_client.mint(&user1, &1000);
 
     token_client.transfer(&user1, &user2, &0);
@@ -386,7 +386,7 @@ fn test_token_insufficient_balance_rejected() {
     let user1 = Address::generate(&env);
     let user2 = Address::generate(&env);
 
-    token_client.initialize(&admin);
+    token_client.initialize_token(&admin);
     token_client.mint(&user1, &100);
 
     token_client.transfer(&user1, &user2, &200);
@@ -405,7 +405,7 @@ fn test_token_transfer_and_total_supply() {
     let user1 = Address::generate(&env);
     let user2 = Address::generate(&env);
 
-    token_client.initialize(&admin);
+    token_client.initialize_token(&admin);
 
     token_client.mint(&user1, &1000);
 
@@ -435,7 +435,7 @@ fn test_medi_chain_reward_configuration() {
 
     let admin = Address::generate(&env);
 
-    token_client.initialize(&medichain_id);
+    token_client.initialize_token(&medichain_id);
 
     client.initialize(
         &admin,
@@ -462,7 +462,7 @@ fn test_medichain_duplicate_initialization_rejected() {
     let admin1 = Address::generate(&env);
     let admin2 = Address::generate(&env);
 
-    token_client.initialize(&medichain_id);
+    token_client.initialize_token(&medichain_id);
 
     client.initialize(
         &admin1,

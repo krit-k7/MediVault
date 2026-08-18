@@ -24,7 +24,7 @@ impl MediRewardToken {
     /// Initialization is allowed only once.
     /// The admin should normally be the MediChain contract address,
     /// so that only MediChain can mint rewards.
-    pub fn initialize(env: Env, admin: Address) {
+    pub fn initialize_token(env: Env, admin: Address) {
         assert!(
             !env.storage().instance().has(&TokenDataKey::Admin),
             "already initialized"
