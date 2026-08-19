@@ -127,8 +127,8 @@ export default function Home() {
         {/* Contrast scrim — sits between the shader canvas and the content.
             Does NOT touch ShaderBackground.tsx, its colors, or its motion —
             purely darkens the area behind the text so it reads clearly. */}
-        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-obsidian via-obsidian/75 to-obsidian/10" />
-        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-obsidian/70 via-transparent to-obsidian/25" />
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-obsidian/70 via-obsidian/35 to-obsidian/5" />
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-obsidian/45 via-transparent to-transparent" />
 
         <div className="glow-orb w-[600px] h-[600px] bg-gold/10 -top-40 -right-40" />
         <div className="glow-orb w-[300px] h-[300px] bg-gold/10 top-1/3 -left-32" />
@@ -427,54 +427,45 @@ function AmbientField() {
  * globals.css, so no new keyframes are needed.
  */
 function VaultCore() {
-  const ticks = Array.from({ length: 32 }, (_, i) => {
-    const angle = (i / 32) * Math.PI * 2 - Math.PI / 2;
+  const ticks = Array.from({ length: 48 }, (_, i) => {
+    const angle = (i / 48) * Math.PI * 2 - Math.PI / 2;
     const isMajor = i % 4 === 0;
-    const outer = 118;
-    const inner = isMajor ? 102 : 110;
+    const outer = isMajor ? 137 : 132;
+    const inner = isMajor ? 119 : 126;
     return {
-      x1: 128 + outer * Math.cos(angle),
-      y1: 128 + outer * Math.sin(angle),
-      x2: 128 + inner * Math.cos(angle),
-      y2: 128 + inner * Math.sin(angle),
+      x1: 143 + outer * Math.cos(angle),
+      y1: 143 + outer * Math.sin(angle),
+      x2: 143 + inner * Math.cos(angle),
+      y2: 143 + inner * Math.sin(angle),
       isMajor,
     };
   });
 
   return (
-    <div className="relative w-[256px] h-[256px] flex items-center justify-center">
-      {/* tick-marked dial ring, counter-rotating slowly */}
-      <svg viewBox="0 0 256 256" className="absolute inset-0 w-full h-full animate-hex-spin-reverse">
-        <circle cx="128" cy="128" r="124" fill="none" stroke="rgba(243,238,227,0.14)" strokeWidth="1" />
-        {ticks.map((t, i) => (
-          <line
-            key={i}
-            x1={t.x1}
-            y1={t.y1}
-            x2={t.x2}
-            y2={t.y2}
-            stroke={t.isMajor ? "#D4A94E" : "rgba(212,169,78,0.35)"}
-            strokeWidth={t.isMajor ? 2 : 1}
-            strokeLinecap="round"
-          />
+    <div className="security-core" aria-label="MediVault encrypted security core">
+      <div className="core-orbit" />
+      <div className="core-orbit core-orbit-reverse" />
+      <svg viewBox="0 0 286 286" className="absolute inset-0 h-full w-full animate-hex-spin-reverse" aria-hidden="true">
+        <circle cx="143" cy="143" r="138" fill="none" stroke="rgba(255,207,82,.28)" strokeWidth="1" />
+        <circle cx="143" cy="143" r="112" fill="none" stroke="rgba(255,138,28,.32)" strokeWidth="1" strokeDasharray="2 8" />
+        {ticks.map((tick, index) => (
+          <line key={index} x1={tick.x1} y1={tick.y1} x2={tick.x2} y2={tick.y2} stroke={tick.isMajor ? "#FFD45C" : "rgba(255,169,34,.42)"} strokeWidth={tick.isMajor ? 2 : 1} strokeLinecap="round" />
         ))}
       </svg>
-
-      {/* bright dot sweeping around the ring like an active scan */}
-      <div className="absolute inset-0 animate-hex-spin">
-        <span className="absolute top-[4px] left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-gold shadow-[0_0_16px_5px_rgba(212,169,78,0.65)]" />
-      </div>
-
-      {/* glass core */}
-      <div className="relative z-[2] w-[188px] h-[188px] rounded-full border border-gold/40 bg-charcoal/95 backdrop-blur-md flex flex-col items-center justify-center overflow-hidden animate-icon-pulse">
-        <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_50%_35%,rgba(212,169,78,0.16),transparent_65%)]" />
-        <div className="relative z-[2] w-14 h-14 rounded-full border border-gold/50 bg-gold/10 flex items-center justify-center mb-4">
-          <Lock className="w-6 h-6 text-gold" strokeWidth={1.5} />
+      <div className="absolute inset-[30px] rounded-full border border-[#ff7d20]/40 bg-[conic-gradient(from_220deg,transparent,#ff8b20,transparent_28%,#ffd45a,transparent_57%)] opacity-80 animate-hex-spin" />
+      <div className="core-scanline" />
+      {[0, 72, 144, 216, 288].map((angle, index) => (
+        <span key={angle} className="core-particle" style={{ ["--angle" as string]: `${angle}deg`, animationDelay: `${index * -0.7}s` }} />
+      ))}
+      <div className="core-hub">
+        <div className="relative mb-2 flex h-11 w-11 items-center justify-center rounded-full border border-[#ffd15a]/70 bg-[#ff9d1c]/15 shadow-[0_0_22px_rgba(255,151,29,.35)]">
+          <Lock className="h-5 w-5 text-[#ffd15a]" strokeWidth={1.8} />
+          <span className="absolute inset-[-6px] rounded-full border border-[#ff9d1c]/20 animate-ping" />
         </div>
-        <div className="relative z-[2] font-serif text-[22px] text-parchment leading-none">MediVault</div>
-        <div className="relative z-[2] flex items-center gap-1.5 mt-3">
-          <span className="w-1.5 h-1.5 rounded-full bg-success animate-blink" />
-          <span className="font-mono-plex text-[9px] text-gold-soft tracking-[2px] uppercase">Encrypted &middot; Live</span>
+        <div className="font-serif text-[21px] leading-none text-parchment">MediVault</div>
+        <div className="mt-2 flex items-center gap-1.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-success shadow-[0_0_8px_#7FA66B] animate-blink" />
+          <span className="font-mono-plex text-[8px] uppercase tracking-[2px] text-[#ffd15a]">Secure · Live</span>
         </div>
       </div>
     </div>
