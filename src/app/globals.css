@@ -701,3 +701,222 @@ body::before {
 @media (max-width: 640px) {
   .security-core { transform: scale(.82); }
 }
+
+/* ---------- Holographic medical-data chamber ---------- */
+@keyframes holoFloat {
+  0%, 100% { transform: translateY(0) rotateX(3deg) rotateY(-2deg); }
+  50% { transform: translateY(-16px) rotateX(-2deg) rotateY(3deg); }
+}
+@keyframes holoGrid {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 0 34px, 34px 0; }
+}
+@keyframes holoScan {
+  0% { transform: translateY(-130%); opacity: 0; }
+  12%, 80% { opacity: .9; }
+  100% { transform: translateY(130%); opacity: 0; }
+}
+@keyframes holoPulse {
+  0%, 100% { opacity: .35; transform: scaleY(.65); }
+  45% { opacity: 1; transform: scaleY(1); }
+}
+@keyframes holoData {
+  0% { transform: translateY(18px); opacity: 0; }
+  18%, 72% { opacity: .9; }
+  100% { transform: translateY(-24px); opacity: 0; }
+}
+@keyframes holoCardLeft {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-7deg); }
+  50% { transform: translate3d(-10px, -13px, 0) rotate(-4deg); }
+}
+@keyframes holoCardRight {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(7deg); }
+  50% { transform: translate3d(10px, -17px, 0) rotate(4deg); }
+}
+@keyframes holoSweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.holo-stage {
+  position: relative;
+  width: min(100%, 760px);
+  min-height: 390px;
+  display: grid;
+  place-items: center;
+  perspective: 1200px;
+}
+.holo-stage::before {
+  content: '';
+  position: absolute;
+  width: 560px;
+  height: 210px;
+  bottom: 26px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255,142,24,.34), rgba(212,169,78,.09) 42%, transparent 72%);
+  filter: blur(24px);
+  animation: coreBreath 3.8s ease-in-out infinite;
+}
+.holo-stage::after {
+  content: '';
+  position: absolute;
+  width: 520px;
+  height: 150px;
+  bottom: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,186,48,.32);
+  box-shadow: 0 0 28px rgba(255,147,22,.22), inset 0 0 24px rgba(255,147,22,.12);
+  transform: rotateX(64deg);
+  animation: holoSweep 11s linear infinite;
+}
+.holo-chamber {
+  position: relative;
+  z-index: 2;
+  width: min(92vw, 570px);
+  height: 300px;
+  overflow: visible;
+  transform-style: preserve-3d;
+  animation: holoFloat 7s ease-in-out infinite;
+}
+.holo-chamber::before {
+  content: '';
+  position: absolute;
+  inset: 18px 0;
+  border: 1px solid rgba(255,188,54,.28);
+  clip-path: polygon(7% 0, 93% 0, 100% 14%, 100% 86%, 93% 100%, 7% 100%, 0 86%, 0 14%);
+  background: linear-gradient(145deg, rgba(255,179,36,.08), rgba(15,12,14,.22) 38%, rgba(255,117,22,.06));
+  box-shadow: inset 0 1px 0 rgba(255,237,159,.18), 0 0 38px rgba(255,145,20,.15);
+  backdrop-filter: blur(8px);
+}
+.holo-chamber::after {
+  content: '';
+  position: absolute;
+  inset: 30px 14px;
+  background-image: linear-gradient(rgba(255,199,66,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,199,66,.08) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: linear-gradient(90deg, transparent, black 16%, black 84%, transparent);
+  animation: holoGrid 4s linear infinite;
+  pointer-events: none;
+}
+.holo-scan {
+  position: absolute;
+  inset: 34px 24px;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
+}
+.holo-scan::before {
+  content: '';
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffd15a 18%, #ff7820 50%, #ffd15a 82%, transparent);
+  box-shadow: 0 0 18px 3px rgba(255,162,30,.65);
+  animation: holoScan 3.2s ease-in-out infinite;
+}
+.holo-rail {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  width: 122px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,204,85,.8), transparent);
+  box-shadow: 0 0 10px rgba(255,168,31,.65);
+}
+.holo-rail::before,
+.holo-rail::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  top: -2px;
+  border: 1px solid #ffd15a;
+  background: #ff7a1d;
+  box-shadow: 0 0 10px rgba(255,160,28,.9);
+}
+.holo-rail::before { left: 14%; }
+.holo-rail::after { right: 14%; }
+.holo-rail-left { left: -34px; transform: rotate(-16deg); }
+.holo-rail-right { right: -34px; transform: rotate(16deg); }
+.holo-hub {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 50%;
+  width: 205px;
+  height: 205px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,207,84,.55);
+  border-radius: 28px;
+  background: radial-gradient(circle at 50% 32%, rgba(255,184,47,.25), rgba(12,10,12,.96) 64%);
+  box-shadow: 0 0 0 8px rgba(255,153,24,.05), 0 0 46px rgba(255,133,20,.28), inset 0 0 34px rgba(255,189,54,.12);
+  clip-path: polygon(12% 0, 88% 0, 100% 12%, 100% 88%, 88% 100%, 12% 100%, 0 88%, 0 12%);
+}
+.holo-hub::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px dashed rgba(255,208,87,.28);
+  clip-path: inherit;
+  animation: holoSweep 9s linear infinite reverse;
+}
+.holo-hub::after {
+  content: '';
+  position: absolute;
+  inset: 26px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,120,23,.32);
+  box-shadow: 0 0 24px rgba(255,143,25,.18);
+  animation: coreBreath 3.2s ease-in-out infinite;
+}
+.holo-wave {
+  position: relative;
+  z-index: 2;
+  width: 150px;
+  height: 38px;
+  margin-bottom: 12px;
+}
+.holo-wave path {
+  fill: none;
+  stroke: #ffd15a;
+  stroke-width: 2;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 5px rgba(255,164,29,.9));
+  stroke-dasharray: 8 5;
+  animation: holoSweep 4s linear infinite;
+}
+.holo-metric {
+  position: absolute;
+  z-index: 7;
+  min-width: 118px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255,196,64,.42);
+  background: rgba(10,8,10,.7);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255,241,180,.12), 0 12px 24px rgba(0,0,0,.32);
+  font-family: var(--font-mono-plex);
+  text-align: left;
+}
+.holo-metric-left { left: -28px; top: 28px; animation: holoCardLeft 5.5s ease-in-out infinite; }
+.holo-metric-right { right: -28px; bottom: 28px; animation: holoCardRight 6s ease-in-out infinite; }
+.holo-metric-label { color: var(--color-muted); font-size: 8px; letter-spacing: 2px; text-transform: uppercase; }
+.holo-metric-value { margin-top: 5px; color: #ffd15a; font-size: 12px; letter-spacing: 1px; }
+.holo-data-dot {
+  position: absolute;
+  z-index: 6;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffd15a;
+  box-shadow: 0 0 12px 3px rgba(255,157,29,.8);
+  animation: holoData 2.8s ease-in-out infinite;
+}
+@media (max-width: 640px) {
+  .holo-stage { min-height: 330px; transform: scale(.84); margin-inline: -8%; }
+  .holo-metric-left { left: -8px; }
+  .holo-metric-right { right: -8px; }
+}
