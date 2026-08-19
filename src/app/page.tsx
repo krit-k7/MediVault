@@ -169,49 +169,11 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ===== VAULT CORE — hero visual ===== */}
+          {/* ===== HOLOGRAPHIC MEDICAL-DATA CHAMBER ===== */}
           <div className="mt-8 w-full max-w-5xl reveal" style={{ transitionDelay: "0.25s" }}>
-            <div className="relative mx-auto flex max-w-[620px] items-center justify-center min-h-[360px] [perspective:1400px]">
-              <div className="absolute h-[380px] w-[380px] rounded-full bg-gold/10 blur-3xl animate-pulse-glow md:h-[480px] md:w-[480px]" />
-
-              <div
-                className="absolute h-[330px] w-[330px] rounded-full animate-radar-sweep md:h-[430px] md:w-[430px]"
-                style={{ background: "conic-gradient(from 0deg, transparent 0deg, rgba(212,169,78,0.4) 20deg, transparent 55deg)" }}
-              />
-
-              <div className="absolute h-[310px] w-[310px] hex-ring hex-ring-outer animate-hex-spin md:h-[400px] md:w-[400px]" />
-              <div className="absolute h-[235px] w-[235px] hex-ring hex-ring-mid animate-hex-spin-reverse md:h-[300px] md:w-[300px]" />
-              <div className="absolute h-[165px] w-[165px] hex-ring hex-ring-inner animate-hex-spin-fast md:h-[210px] md:w-[210px]" />
-
-              <span className="absolute w-px h-10 bg-gradient-to-t from-gold/0 via-gold/60 to-gold/0 top-[70%] left-[30%] animate-data-rise" style={{ animationDelay: "0s" }} />
-              <span className="absolute w-px h-8 bg-gradient-to-t from-gold/0 via-gold/50 to-gold/0 top-[75%] left-[62%] animate-data-rise" style={{ animationDelay: "1.5s" }} />
-              <span className="absolute w-px h-12 bg-gradient-to-t from-gold/0 via-gold/60 to-gold/0 top-[68%] left-[46%] animate-data-rise" style={{ animationDelay: "3s" }} />
-
-              <div className="icon-shard absolute top-[4%] left-[10%] animate-drift-a">
-                <Fingerprint className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
-              </div>
-              <div className="icon-shard absolute top-[8%] right-[4%] animate-drift-b">
-                <ShieldCheck className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
-              </div>
-              <div className="icon-shard absolute bottom-[10%] left-[2%] animate-drift-c">
-                <FileLock2 className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
-              </div>
-              <div className="icon-shard absolute bottom-[16%] right-[0%] animate-drift-d">
-                <HeartPulse className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
-              </div>
-              <div className="icon-shard absolute top-[46%] -left-[8%] animate-drift-e">
-                <Database className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
-              </div>
-              <div className="icon-shard absolute top-[42%] -right-[10%] animate-drift-f">
-                <KeyRound className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
-              </div>
-
-              <div className="relative z-[5] animate-vault-rotate">
-                <VaultCore />
-              </div>
-            </div>
+            <HolographicChamber />
           </div>
-          {/* ===== /VAULT CORE ===== */}
+          {/* ===== /HOLOGRAPHIC MEDICAL-DATA CHAMBER ===== */}
         </div>
       </section>
 
@@ -426,6 +388,47 @@ function AmbientField() {
  * existing hex-spin / icon-pulse / blink animations already defined in
  * globals.css, so no new keyframes are needed.
  */
+function HolographicChamber() {
+  const dataDots = [
+    { top: "24%", left: "22%", delay: "0s" },
+    { top: "66%", left: "31%", delay: "0.8s" },
+    { top: "36%", left: "73%", delay: "1.4s" },
+    { top: "72%", left: "68%", delay: "2.1s" },
+  ];
+
+  return (
+    <div className="holo-stage" aria-label="MediVault holographic medical data chamber">
+      <div className="holo-chamber">
+        <div className="holo-scan" />
+        <span className="holo-rail holo-rail-left" />
+        <span className="holo-rail holo-rail-right" />
+        {dataDots.map((dot, index) => (
+          <span key={index} className="holo-data-dot" style={{ top: dot.top, left: dot.left, animationDelay: dot.delay }} />
+        ))}
+        <div className="holo-metric holo-metric-left">
+          <div className="holo-metric-label">Records indexed</div>
+          <div className="holo-metric-value">12,400+</div>
+        </div>
+        <div className="holo-metric holo-metric-right">
+          <div className="holo-metric-label">Protocol status</div>
+          <div className="holo-metric-value flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-success animate-blink" /> ENCRYPTED</div>
+        </div>
+        <div className="holo-hub">
+          <svg className="holo-wave" viewBox="0 0 150 38" aria-hidden="true">
+            <path d="M2 22h18l7-16 8 28 9-20 8 8h17l7-14 8 18 7-5h24l7-8 8 10h18" />
+          </svg>
+          <div className="relative z-[2] font-serif text-[22px] leading-none text-parchment">MediVault</div>
+          <div className="relative z-[2] mt-2 font-mono-plex text-[8px] uppercase tracking-[2.5px] text-[#ffd15a]">Patient data mesh</div>
+          <div className="relative z-[2] mt-3 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-success shadow-[0_0_8px_#7FA66B] animate-blink" />
+            <span className="font-mono-plex text-[8px] uppercase tracking-[2px] text-muted">Live sync</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function VaultCore() {
   const ticks = Array.from({ length: 48 }, (_, i) => {
     const angle = (i / 48) * Math.PI * 2 - Math.PI / 2;
