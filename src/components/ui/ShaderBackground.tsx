@@ -121,7 +121,7 @@ void main(){gl_Position=position;}`;
       const gl = this.gl;
       const program = this.program;
       if (!program || gl.getProgramParameter(program, gl.DELETE_STATUS)) return;
-      gl.clearColor(0.012, 0.009, 0.012, 1); // deeper base so animated luminance reads clearly
+      gl.clearColor(0.03, 0.027, 0.039, 1); // obsidian
       gl.clear(gl.COLOR_BUFFER_BIT);
       gl.useProgram(program);
       gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
@@ -227,18 +227,18 @@ void main(){gl_Position=position;}`;
   return canvasRef;
 };
 
-export const ShaderBackground = () => {
+export const ShaderBackground = ({ opacity = 0.5 }: { opacity?: number }) => {
   const canvasRef = useShaderBackground();
   return (
     <canvas
       ref={canvasRef}
       className="absolute inset-0 w-full h-full object-cover touch-none -z-0"
-      style={{ background: "#08070A" }}
+      style={{ background: "#08070A", opacity }}
     />
   );
 };
 
-// Recolored to MediVault's gold/obsidian palette (#D4A94E accent on #08070A base)
+// Recolored to MediVault's gold/obsidian palette (#D4A94E accent on #08070A base) — dimmed intensity
 const goldShaderSource = `#version 300 es
 precision highp float;
 out vec4 O;
@@ -276,25 +276,17 @@ float clouds(vec2 p) {
 void main(void) {
   vec2 uv=(FC-.5*R)/MN,st=uv*vec2(2,1);
   vec3 col=vec3(0);
-  float bg=clouds(vec2(st.x+T*.32,-st.y+sin(T*.12)*.18));
-  float flow=fbm(vec2(st.x*.72+T*.16, st.y*.48-T*.11));
-  float wave=0.5+0.5*sin(st.x*3.8+sin(st.y*2.2+T*.7)*2.4-T*1.8);
+  float bg=clouds(vec2(st.x+T*.5,-st.y));
   uv*=1.-.3*(sin(T*.2)*.5+.5);
   for (float i=1.; i<12.; i++) {
     uv+=.1*cos(i*vec2(.1+.01*i, .8)+i*i+T*.5+.1*uv.x);
     vec2 p=uv;
     float d=length(p);
-    vec3 gold=vec3(1.0,0.48,0.075);
-    vec3 amber=vec3(0.95,0.72,0.18);
-    col+=.0032/d*(cos(sin(i)*vec3(.3,.9,1.4))*gold+amber);
-    float b=noise(i+p+bg*1.731+T*.08);
-    col+=.005*b/length(max(p,vec2(b*p.x*.02,p.y)))*amber;
-    col=mix(col,vec3(bg*.38,bg*.16,bg*.035),d*.82);
+    col+=.0007/d*(cos(sin(i)*vec3(.3,.9,1.4))*vec3(.83,.66,.31)+vec3(.83,.66,.31));
+    float b=noise(i+p+bg*1.731);
+    col+=.0012*b/length(max(p,vec2(b*p.x*.02,p.y)))*vec3(.83,.66,.31);
+    col=mix(col,vec3(bg*.14,bg*.11,bg*.05),d);
   }
-  float streak=smoothstep(.96,1.0,sin((st.y+st.x*.28+T*.22)*18.0+flow*4.0));
-  float scan=exp(-abs(st.y-(sin(st.x*1.8+T*.9)*.18+T*.045))*24.0);
-  col+=gold*streak*.07*(.55+.45*wave)+amber*scan*.13;
-  col+=vec3(0.32,0.06,0.012)*flow*.18;
   O=vec4(col,1);
 }`;
 
