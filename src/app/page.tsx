@@ -121,7 +121,7 @@ export default function Home() {
       </nav>
 
       {/* HERO */}
-      <section className="relative overflow-hidden border-b border-line">
+      <section className="hero-shell relative overflow-hidden border-b border-line">
         <ShaderBackground />
 
         {/* Contrast scrim — sits between the shader canvas and the content.
@@ -133,20 +133,20 @@ export default function Home() {
         <div className="glow-orb w-[600px] h-[600px] bg-gold/10 -top-40 -right-40" />
         <div className="glow-orb w-[300px] h-[300px] bg-gold/10 top-1/3 -left-32" />
 
-        <div className="relative z-[2] grid lg:grid-cols-[1.1fr_0.9fr] gap-10 px-6 md:px-20 pt-20 pb-16 lg:pt-28 lg:pb-24 items-center min-h-[calc(100vh-64px)]">
-          <div>
+        <div className="relative z-[2] flex min-h-[calc(100vh-64px)] flex-col items-center px-6 pb-16 pt-20 text-center md:px-20 lg:pt-28 lg:pb-24">
+          <div className="flex w-full max-w-5xl flex-col items-center">
             <div className="badge-pill mb-8 reveal !bg-obsidian/80 !border-gold/50 backdrop-blur-md shadow-[0_2px_20px_-4px_rgba(0,0,0,0.6)]" style={{ transitionDelay: "0s" }}>
               <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse-glow" />
               Stellar &middot; Soroban &middot; Patient-Owned
             </div>
-            <h1 className="font-serif text-[clamp(44px,6.2vw,84px)] leading-[1.05] text-parchment mb-8 max-w-[720px] reveal drop-shadow-[0_4px_28px_rgba(0,0,0,0.7)]" style={{ transitionDelay: "0.1s" }}>
+            <h1 className="hero-heading font-serif text-[clamp(44px,6.2vw,84px)] leading-[1.05] text-parchment mb-8 max-w-[900px] reveal drop-shadow-[0_4px_28px_rgba(0,0,0,0.7)]" style={{ transitionDelay: "0.1s" }}>
               Your health, <em className="italic text-gold-soft">confidential</em> on chain.
             </h1>
-            <p className="text-lg leading-[1.75] text-parchment/80 max-w-[480px] mb-12 font-light reveal drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]" style={{ transitionDelay: "0.2s" }}>
+            <p className="hero-copy text-lg leading-[1.75] max-w-[680px] mb-12 font-light reveal drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]" style={{ transitionDelay: "0.2s" }}>
               MediVault stores your medical records on IPFS and anchors access rights to the blockchain.
               No hospital middlemen, no data breaches — <span className="text-parchment">just you and your records</span>, secured by cryptography.
             </p>
-            <div className="flex flex-wrap gap-4 items-center reveal" style={{ transitionDelay: "0.3s" }}>
+            <div className="flex flex-wrap justify-center gap-4 items-center reveal" style={{ transitionDelay: "0.3s" }}>
               <Link
                 href={address ? "/dashboard" : "#"}
                 onClick={(e) => !address && (e.preventDefault(), connect())}
@@ -160,7 +160,7 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="hidden md:flex items-center gap-8 mt-16 pt-8 border-t border-line-strong font-mono-plex text-[10px] tracking-[1.5px] text-muted uppercase reveal bg-obsidian/50 backdrop-blur-md rounded-lg px-4 -mx-4" style={{ transitionDelay: "0.4s" }}>
+            <div className="hidden md:flex items-center justify-center gap-8 mt-16 pt-8 border-t border-line-strong font-mono-plex text-[10px] tracking-[1.5px] text-muted uppercase reveal bg-obsidian/50 backdrop-blur-md rounded-lg px-4" style={{ transitionDelay: "0.4s" }}>
               <div><span className="text-muted">Contract</span> <span className="text-gold-soft">CBG5D...GW5N</span></div>
               <div className="w-px h-3 bg-line-strong" />
               <div><span className="text-muted">Network</span> <span className="text-gold-soft">Testnet &middot; Live</span></div>
@@ -170,18 +170,18 @@ export default function Home() {
           </div>
 
           {/* ===== VAULT CORE — hero visual ===== */}
-          <div className="reveal" style={{ transitionDelay: "0.25s" }}>
-            <div className="relative flex items-center justify-center min-h-[460px] [perspective:1400px]">
-              <div className="absolute w-[480px] h-[480px] rounded-full bg-gold/10 blur-3xl animate-pulse-glow" />
+          <div className="mt-8 w-full max-w-5xl reveal" style={{ transitionDelay: "0.25s" }}>
+            <div className="relative mx-auto flex max-w-[620px] items-center justify-center min-h-[360px] [perspective:1400px]">
+              <div className="absolute h-[380px] w-[380px] rounded-full bg-gold/10 blur-3xl animate-pulse-glow md:h-[480px] md:w-[480px]" />
 
               <div
-                className="absolute w-[430px] h-[430px] rounded-full animate-radar-sweep"
+                className="absolute h-[330px] w-[330px] rounded-full animate-radar-sweep md:h-[430px] md:w-[430px]"
                 style={{ background: "conic-gradient(from 0deg, transparent 0deg, rgba(212,169,78,0.4) 20deg, transparent 55deg)" }}
               />
 
-              <div className="absolute w-[400px] h-[400px] hex-ring hex-ring-outer animate-hex-spin" />
-              <div className="absolute w-[300px] h-[300px] hex-ring hex-ring-mid animate-hex-spin-reverse" />
-              <div className="absolute w-[210px] h-[210px] hex-ring hex-ring-inner animate-hex-spin-fast" />
+              <div className="absolute h-[310px] w-[310px] hex-ring hex-ring-outer animate-hex-spin md:h-[400px] md:w-[400px]" />
+              <div className="absolute h-[235px] w-[235px] hex-ring hex-ring-mid animate-hex-spin-reverse md:h-[300px] md:w-[300px]" />
+              <div className="absolute h-[165px] w-[165px] hex-ring hex-ring-inner animate-hex-spin-fast md:h-[210px] md:w-[210px]" />
 
               <span className="absolute w-px h-10 bg-gradient-to-t from-gold/0 via-gold/60 to-gold/0 top-[70%] left-[30%] animate-data-rise" style={{ animationDelay: "0s" }} />
               <span className="absolute w-px h-8 bg-gradient-to-t from-gold/0 via-gold/50 to-gold/0 top-[75%] left-[62%] animate-data-rise" style={{ animationDelay: "1.5s" }} />
