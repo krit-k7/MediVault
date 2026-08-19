@@ -585,3 +585,119 @@ body::before {
     opacity: 0.2;
   }
 }
+
+/* ---------- Intense security core ---------- */
+@keyframes coreBreath {
+  0%, 100% { transform: scale(.96); opacity: .58; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+@keyframes coreSweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes coreSweepReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+@keyframes coreScanline {
+  0%, 100% { transform: translateY(-44px); opacity: 0; }
+  18%, 78% { opacity: .9; }
+  50% { transform: translateY(44px); opacity: .35; }
+}
+@keyframes coreParticle {
+  0%, 100% { transform: rotate(var(--angle)) translateX(108px) scale(.55); opacity: .2; }
+  50% { transform: rotate(calc(var(--angle) + 180deg)) translateX(122px) scale(1.15); opacity: 1; }
+}
+@keyframes coreGlitch {
+  0%, 88%, 100% { transform: translate(0); }
+  90% { transform: translate(2px, -1px); }
+  92% { transform: translate(-2px, 1px); }
+}
+.security-core {
+  position: relative;
+  width: 286px;
+  height: 286px;
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 0 32px rgba(212,169,78,.24));
+  animation: coreGlitch 7s steps(1) infinite;
+}
+.security-core::before,
+.security-core::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.security-core::before {
+  inset: 26px;
+  border: 1px solid rgba(255,181,38,.34);
+  box-shadow: 0 0 36px rgba(255,139,20,.2), inset 0 0 32px rgba(255,139,20,.12);
+  animation: coreBreath 3.8s ease-in-out infinite;
+}
+.security-core::after {
+  inset: 48px;
+  border: 1px dashed rgba(255,211,90,.48);
+  animation: coreSweepReverse 13s linear infinite;
+}
+.core-scanline {
+  position: absolute;
+  left: 76px;
+  right: 76px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ffd35a, #ff7b18, transparent);
+  box-shadow: 0 0 14px 2px rgba(255,166,32,.8);
+  animation: coreScanline 2.8s ease-in-out infinite;
+}
+.core-orbit {
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  border: 1px solid rgba(212,169,78,.24);
+  border-top-color: #ffae22;
+  border-right-color: rgba(255,112,34,.85);
+  animation: coreSweep 8s linear infinite;
+}
+.core-orbit-reverse {
+  inset: 14px;
+  border-top-color: transparent;
+  border-left-color: #ffd15a;
+  animation-duration: 5s;
+  animation-direction: reverse;
+}
+.core-particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px;
+  border-radius: 50%;
+  background: #ffd15a;
+  box-shadow: 0 0 12px 3px rgba(255,166,32,.8);
+  animation: coreParticle 4.5s ease-in-out infinite;
+}
+.core-hub {
+  position: relative;
+  z-index: 3;
+  width: 142px;
+  height: 142px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255,199,65,.62);
+  background: radial-gradient(circle at 50% 28%, rgba(255,191,48,.22), rgba(15,12,12,.98) 68%);
+  box-shadow: 0 0 0 7px rgba(255,171,36,.06), 0 0 48px rgba(255,137,22,.26), inset 0 0 28px rgba(255,185,47,.15);
+}
+.core-hub::after {
+  content: '';
+  position: absolute;
+  inset: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,213,96,.18);
+}
+@media (max-width: 640px) {
+  .security-core { transform: scale(.82); }
+}
