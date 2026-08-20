@@ -387,47 +387,10 @@ export default function Home() {
 }
 
 function AmbientField() {
-  const stars = [
-    { top: "8%", left: "12%", size: 2, delay: "0s" },
-    { top: "15%", left: "78%", size: 1.5, delay: "0.6s" },
-    { top: "22%", left: "34%", size: 1.5, delay: "1.2s" },
-    { top: "30%", left: "90%", size: 2, delay: "1.8s" },
-    { top: "38%", left: "6%", size: 1.5, delay: "2.4s" },
-    { top: "44%", left: "58%", size: 2, delay: "0.3s" },
-    { top: "52%", left: "22%", size: 1.5, delay: "1.5s" },
-    { top: "60%", left: "82%", size: 1.5, delay: "2.1s" },
-    { top: "68%", left: "40%", size: 2, delay: "0.9s" },
-    { top: "74%", left: "12%", size: 1.5, delay: "1.8s" },
-    { top: "80%", left: "68%", size: 2, delay: "0.4s" },
-    { top: "88%", left: "30%", size: 1.5, delay: "2.7s" },
-    { top: "18%", left: "50%", size: 1.5, delay: "1s" },
-    { top: "56%", left: "94%", size: 1.5, delay: "1.6s" },
-    { top: "92%", left: "82%", size: 2, delay: "0.7s" },
-    { top: "10%", left: "62%", size: 1.5, delay: "2.2s" },
-  ];
-
   return (
     <div className="ambient-field" aria-hidden="true">
       <div className="ambient-drift animate-nebula-1 w-[520px] h-[520px] bg-gold/[0.05] -top-40 left-[10%]" />
       <div className="ambient-drift animate-nebula-2 w-[420px] h-[420px] bg-gold/[0.04] top-[55%] right-[5%]" />
-
-      {stars.map((s, i) => (
-        <span
-          key={i}
-          className="ambient-star animate-star-twinkle"
-          style={{
-            top: s.top,
-            left: s.left,
-            width: `${s.size}px`,
-            height: `${s.size}px`,
-            animationDelay: s.delay,
-          }}
-        />
-      ))}
-
-      <div className="comet animate-comet-1" style={{ top: "6%", left: "0%" }} />
-      <div className="comet animate-comet-2" style={{ top: "28%", left: "-4%" }} />
-      <div className="comet animate-comet-3" style={{ top: "48%", left: "-2%" }} />
     </div>
   );
 }
