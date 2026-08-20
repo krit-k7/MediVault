@@ -192,7 +192,8 @@ This is the same flow described in the [Inter-Contract Calls](#-inter-contract-c
 ### 📱 Mobile Responsive View
 *The application is built with a mobile-first approach, ensuring a seamless experience across all devices.*
 
-<img width="1919" height="865" alt="image" src="https://github.com/user-attachments/assets/022de8af-0b35-4fe2-8c50-8986798e2532" />
+<img width="1809" height="866" alt="image" src="https://github.com/user-attachments/assets/52963dbf-9735-460e-8f15-a1160f9fb8f0" />
+
 
 
 
