@@ -91,6 +91,16 @@ export default function Home() {
     return () => revealObserver.disconnect();
   }, []);
 
+  // ===== Data Constellation Vault — node + connector-path definitions =====
+  const constellationNodes = [
+    { Icon: Fingerprint, top: "16.7%", left: "12.5%", path: "M80,70 Q140,180 320,210" },
+    { Icon: ShieldCheck, top: "11.9%", left: "87.5%", path: "M560,50 Q470,160 320,210" },
+    { Icon: Database, top: "54.8%", left: "6.25%", path: "M40,230 Q140,260 320,210" },
+    { Icon: KeyRound, top: "59.5%", left: "93.75%", path: "M600,250 Q480,270 320,210" },
+    { Icon: FileLock2, top: "85.7%", left: "21.9%", path: "M140,360 Q200,320 320,210" },
+    { Icon: HeartPulse, top: "90.5%", left: "75%", path: "M480,380 Q420,330 320,210" },
+  ];
+
   const tickerItems = [
     "Decentralised Storage", "IPFS Pinned", "Freighter Auth",
     "Zero Knowledge", "Open Protocol", "Immutable Records",
@@ -169,11 +179,56 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ===== HOLOGRAPHIC MEDICAL-DATA CHAMBER ===== */}
+          {/* ===== VAULT CORE — hero visual (Data Constellation Vault) ===== */}
           <div className="mt-8 w-full max-w-5xl reveal" style={{ transitionDelay: "0.25s" }}>
-            <HolographicChamber />
+            <div className="relative mx-auto flex max-w-[680px] items-center justify-center min-h-[380px] md:min-h-[460px]">
+              <div className="absolute h-[380px] w-[380px] rounded-full bg-gold/10 blur-3xl animate-pulse-glow md:h-[460px] md:w-[460px]" />
+
+              <div className="constellation-floor" />
+
+              <svg viewBox="0 0 640 420" className="absolute inset-0 h-full w-full" aria-hidden="true">
+                <defs>
+                  <linearGradient id="lineFade" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#D4A94E" stopOpacity="0" />
+                    <stop offset="100%" stopColor="#FFD45C" stopOpacity="0.65" />
+                  </linearGradient>
+                </defs>
+                {constellationNodes.map((n, i) => (
+                  <g key={`link-${i}`}>
+                    <path
+                      id={`link-path-${i}`}
+                      d={n.path}
+                      fill="none"
+                      stroke="url(#lineFade)"
+                      strokeWidth="1.2"
+                      className="constellation-line"
+                      style={{ animationDelay: `${i * 0.15}s` }}
+                    />
+                    <circle r="3" fill="#FFD45C" className="constellation-pulse">
+                      <animateMotion dur={`${3.2 + i * 0.4}s`} repeatCount="indefinite" begin={`${i * 0.5}s`}>
+                        <mpath href={`#link-path-${i}`} />
+                      </animateMotion>
+                    </circle>
+                  </g>
+                ))}
+              </svg>
+
+              {constellationNodes.map((n, i) => (
+                <div
+                  key={`node-${i}`}
+                  className="constellation-node"
+                  style={{ top: n.top, left: n.left, animationDelay: `${i * 0.3}s` }}
+                >
+                  <n.Icon className="w-4 h-4 text-gold-soft" strokeWidth={1.5} />
+                </div>
+              ))}
+
+              <div className="relative z-[5]">
+                <VaultCore />
+              </div>
+            </div>
           </div>
-          {/* ===== /HOLOGRAPHIC MEDICAL-DATA CHAMBER ===== */}
+          {/* ===== /VAULT CORE ===== */}
         </div>
       </section>
 
@@ -381,91 +436,21 @@ function AmbientField() {
 /**
  * VaultCore
  * -----------------------------------------------------------------------
- * The centerpiece of the hero visual — a circular security dial instead
- * of a flat text card. A tick-marked ring counter-rotates slowly, a
- * bright dot sweeps around it like an active scan, and a glass core in
- * the middle holds the lock icon + brand + live status. Reuses the
- * existing hex-spin / icon-pulse / blink animations already defined in
- * globals.css, so no new keyframes are needed.
+ * The centerpiece of the "Data Constellation Vault" hero visual — a
+ * glass hexagonal core surrounded by an orbiting dashed ring. Sits at
+ * the convergence point of the constellation lines drawn in the parent
+ * component, with pulses of light travelling along those lines toward it.
  */
-function HolographicChamber() {
-  const dataDots = [
-    { top: "24%", left: "22%", delay: "0s" },
-    { top: "66%", left: "31%", delay: "0.8s" },
-    { top: "36%", left: "73%", delay: "1.4s" },
-    { top: "72%", left: "68%", delay: "2.1s" },
-  ];
-
-  return (
-    <div className="holo-stage" aria-label="MediVault holographic medical data chamber">
-      <div className="holo-chamber">
-        <div className="holo-scan" />
-        <span className="holo-rail holo-rail-left" />
-        <span className="holo-rail holo-rail-right" />
-        {dataDots.map((dot, index) => (
-          <span key={index} className="holo-data-dot" style={{ top: dot.top, left: dot.left, animationDelay: dot.delay }} />
-        ))}
-        <div className="holo-metric holo-metric-left">
-          <div className="holo-metric-label">Records indexed</div>
-          <div className="holo-metric-value">12,400+</div>
-        </div>
-        <div className="holo-metric holo-metric-right">
-          <div className="holo-metric-label">Protocol status</div>
-          <div className="holo-metric-value flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-success animate-blink" /> ENCRYPTED</div>
-        </div>
-        <div className="holo-hub">
-          <svg className="holo-wave" viewBox="0 0 150 38" aria-hidden="true">
-            <path d="M2 22h18l7-16 8 28 9-20 8 8h17l7-14 8 18 7-5h24l7-8 8 10h18" />
-          </svg>
-          <div className="relative z-[2] font-serif text-[22px] leading-none text-parchment">MediVault</div>
-          <div className="relative z-[2] mt-2 font-mono-plex text-[8px] uppercase tracking-[2.5px] text-[#ffd15a]">Patient data mesh</div>
-          <div className="relative z-[2] mt-3 flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-success shadow-[0_0_8px_#7FA66B] animate-blink" />
-            <span className="font-mono-plex text-[8px] uppercase tracking-[2px] text-muted">Live sync</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function VaultCore() {
-  const ticks = Array.from({ length: 48 }, (_, i) => {
-    const angle = (i / 48) * Math.PI * 2 - Math.PI / 2;
-    const isMajor = i % 4 === 0;
-    const outer = isMajor ? 137 : 132;
-    const inner = isMajor ? 119 : 126;
-    return {
-      x1: 143 + outer * Math.cos(angle),
-      y1: 143 + outer * Math.sin(angle),
-      x2: 143 + inner * Math.cos(angle),
-      y2: 143 + inner * Math.sin(angle),
-      isMajor,
-    };
-  });
-
   return (
-    <div className="security-core" aria-label="MediVault encrypted security core">
-      <div className="core-orbit" />
-      <div className="core-orbit core-orbit-reverse" />
-      <svg viewBox="0 0 286 286" className="absolute inset-0 h-full w-full animate-hex-spin-reverse" aria-hidden="true">
-        <circle cx="143" cy="143" r="138" fill="none" stroke="rgba(255,207,82,.28)" strokeWidth="1" />
-        <circle cx="143" cy="143" r="112" fill="none" stroke="rgba(255,138,28,.32)" strokeWidth="1" strokeDasharray="2 8" />
-        {ticks.map((tick, index) => (
-          <line key={index} x1={tick.x1} y1={tick.y1} x2={tick.x2} y2={tick.y2} stroke={tick.isMajor ? "#FFD45C" : "rgba(255,169,34,.42)"} strokeWidth={tick.isMajor ? 2 : 1} strokeLinecap="round" />
-        ))}
-      </svg>
-      <div className="absolute inset-[30px] rounded-full border border-[#ff7d20]/40 bg-[conic-gradient(from_220deg,transparent,#ff8b20,transparent_28%,#ffd45a,transparent_57%)] opacity-80 animate-hex-spin" />
-      <div className="core-scanline" />
-      {[0, 72, 144, 216, 288].map((angle, index) => (
-        <span key={angle} className="core-particle" style={{ ["--angle" as string]: `${angle}deg`, animationDelay: `${index * -0.7}s` }} />
-      ))}
-      <div className="core-hub">
-        <div className="relative mb-2 flex h-11 w-11 items-center justify-center rounded-full border border-[#ffd15a]/70 bg-[#ff9d1c]/15 shadow-[0_0_22px_rgba(255,151,29,.35)]">
+    <div className="vault-hex" aria-label="MediVault encrypted security core">
+      <div className="vault-hex-ring" />
+      <div className="vault-hex-inner">
+        <div className="relative mb-1.5 flex h-11 w-11 items-center justify-center rounded-full border border-[#ffd15a]/70 bg-[#ff9d1c]/15 shadow-[0_0_22px_rgba(255,151,29,.35)]">
           <Lock className="h-5 w-5 text-[#ffd15a]" strokeWidth={1.8} />
           <span className="absolute inset-[-6px] rounded-full border border-[#ff9d1c]/20 animate-ping" />
         </div>
-        <div className="font-serif text-[21px] leading-none text-parchment">MediVault</div>
+        <div className="font-serif text-[19px] leading-none text-parchment">MediVault</div>
         <div className="mt-2 flex items-center gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-success shadow-[0_0_8px_#7FA66B] animate-blink" />
           <span className="font-mono-plex text-[8px] uppercase tracking-[2px] text-[#ffd15a]">Secure · Live</span>
