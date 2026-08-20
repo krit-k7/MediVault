@@ -232,8 +232,9 @@ export const ShaderBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full object-cover touch-none -z-0"
-      style={{ background: "#08070A" }}
+      className="fixed inset-0 w-screen h-screen object-cover touch-none"
+      style={{ background: "#08070A", zIndex: -2 }}
+      aria-hidden="true"
     />
   );
 };
