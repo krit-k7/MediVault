@@ -153,7 +153,8 @@ This is the same flow described in the [Inter-Contract Calls](#-inter-contract-c
 ## 📸 Platform Screenshots
 
 ### Home
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/755ab438-c824-4a25-8acb-14fdff006101" />
+<img width="1914" height="980" alt="image" src="https://github.com/user-attachments/assets/c121e629-d925-4a05-a77f-de5b125cb44d" />
+
 
 
 
