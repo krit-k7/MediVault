@@ -112,6 +112,7 @@ export default function Home() {
 
   return (
     <div className="relative isolate flex flex-col bg-obsidian">
+      <ShaderBackground />
       <AmbientField />
 
       {/* TOPBAR */}
@@ -132,8 +133,6 @@ export default function Home() {
 
       {/* HERO */}
       <section className="hero-shell relative overflow-hidden border-b border-line">
-        <ShaderBackground />
-
         {/* Contrast scrim — sits between the shader canvas and the content.
             Does NOT touch ShaderBackground.tsx, its colors, or its motion —
             purely darkens the area behind the text so it reads clearly. */}
