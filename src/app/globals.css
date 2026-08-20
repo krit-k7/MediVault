@@ -206,6 +206,53 @@ body::before {
   color: rgba(243, 238, 227, 0.86);
 }
 
+/* ---------- Hero meta chips (Contract / Network / Storage) ---------- */
+
+.meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  border: 1px solid var(--color-line-strong);
+  background: rgba(8, 7, 10, 0.6);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px -12px rgba(0, 0, 0, 0.7);
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+.meta-chip:hover {
+  border-color: rgba(212, 169, 78, 0.5);
+  background: rgba(212, 169, 78, 0.08);
+  transform: translateY(-2px);
+}
+
+.meta-chip-label {
+  font-family: var(--font-mono-plex);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.meta-chip-value {
+  font-family: var(--font-mono-plex);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: var(--color-gold-soft);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.meta-chip-live {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--color-success);
+  box-shadow: 0 0 8px rgba(127, 166, 107, 0.85);
+  animation: blink 2s ease-in-out infinite;
+}
+
 /* ---------- Feature cards: floating + glow-on-hover ---------- */
 
 .feature-card {
@@ -372,80 +419,6 @@ body::before {
 }
 .step-panel:hover::before { opacity: 1; }
 
-/* ---------- Ambient Field: comets, stars, nebula drift (fixed, behind everything) ---------- */
-
-.ambient-field {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.ambient-drift {
-  position: absolute;
-  border-radius: 9999px;
-}
-@keyframes nebulaDrift1 {
-  0%, 100% { transform: translate(0, 0); }
-  50%      { transform: translate(90px, 60px); }
-}
-.animate-nebula-1 { animation: nebulaDrift1 34s ease-in-out infinite; }
-
-@keyframes nebulaDrift2 {
-  0%, 100% { transform: translate(0, 0); }
-  50%      { transform: translate(-80px, -50px); }
-}
-.animate-nebula-2 { animation: nebulaDrift2 40s ease-in-out infinite; }
-
-.ambient-star {
-  position: absolute;
-  border-radius: 9999px;
-  background: var(--color-parchment);
-}
-@keyframes starTwinkle {
-  0%, 100% { opacity: 0.15; transform: scale(1); }
-  50%      { opacity: 0.9; transform: scale(1.5); }
-}
-.animate-star-twinkle { animation: starTwinkle 3.4s ease-in-out infinite; }
-
-.comet {
-  position: absolute;
-  width: 160px;
-  height: 2px;
-  border-radius: 9999px;
-  background: linear-gradient(90deg, transparent, rgba(212, 169, 78, 0.15) 30%, rgba(212, 169, 78, 0.9) 85%, #F3EEE3 100%);
-  box-shadow: 0 0 8px 1px rgba(212, 169, 78, 0.5);
-  opacity: 0;
-}
-
-@keyframes cometTravel1 {
-  0%   { transform: translate(-10vw, -10vh) rotate(-22deg); opacity: 0; }
-  6%   { opacity: 1; }
-  22%  { opacity: 1; }
-  34%  { transform: translate(70vw, 55vh) rotate(-22deg); opacity: 0; }
-  100% { transform: translate(70vw, 55vh) rotate(-22deg); opacity: 0; }
-}
-.animate-comet-1 { animation: cometTravel1 9s ease-in infinite; }
-
-@keyframes cometTravel2 {
-  0%   { transform: translate(-10vw, -10vh) rotate(-22deg); opacity: 0; }
-  6%   { opacity: 1; }
-  22%  { opacity: 1; }
-  34%  { transform: translate(65vw, 50vh) rotate(-22deg); opacity: 0; }
-  100% { transform: translate(65vw, 50vh) rotate(-22deg); opacity: 0; }
-}
-.animate-comet-2 { animation: cometTravel2 12s ease-in infinite; animation-delay: 4s; }
-
-@keyframes cometTravel3 {
-  0%   { transform: translate(-10vw, -12vh) rotate(-18deg); opacity: 0; }
-  6%   { opacity: 1; }
-  20%  { opacity: 1; }
-  32%  { transform: translate(75vw, 60vh) rotate(-18deg); opacity: 0; }
-  100% { transform: translate(75vw, 60vh) rotate(-18deg); opacity: 0; }
-}
-.animate-comet-3 { animation: cometTravel3 15s ease-in infinite; animation-delay: 8s; }
-
 /* ---------- Scroll-triggered reveal ---------- */
 
 .reveal {
@@ -466,10 +439,6 @@ body::before {
     opacity: 1;
     transform: none;
     transition: none;
-  }
-  .comet, .ambient-star, .ambient-drift {
-    animation: none !important;
-    opacity: 0.2;
   }
 }
 
