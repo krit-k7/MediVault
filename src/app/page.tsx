@@ -113,7 +113,7 @@ export default function Home() {
   return (
     <div className="relative isolate flex flex-col bg-obsidian">
       <ShaderBackground />
-      
+
       {/* TOPBAR */}
       <nav className="sticky top-0 z-[100] bg-obsidian/90 backdrop-blur-md flex items-center justify-between px-6 md:px-10 h-16 border-b border-line">
         <div className="flex items-center gap-2.5">
@@ -168,12 +168,10 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="hidden md:flex items-center justify-center gap-8 mt-16 pt-8 border-t border-line-strong font-mono-plex text-[10px] tracking-[1.5px] text-muted uppercase reveal bg-obsidian/50 backdrop-blur-md rounded-lg px-4" style={{ transitionDelay: "0.4s" }}>
-              <div><span className="text-muted">Contract</span> <span className="text-gold-soft">CBG5D...GW5N</span></div>
-              <div className="w-px h-3 bg-line-strong" />
-              <div><span className="text-muted">Network</span> <span className="text-gold-soft">Testnet &middot; Live</span></div>
-              <div className="w-px h-3 bg-line-strong" />
-              <div><span className="text-muted">Storage</span> <span className="text-gold-soft">IPFS</span></div>
+            <div className="hidden md:flex w-full flex-wrap items-center justify-center gap-3 mt-16 reveal" style={{ transitionDelay: "0.4s" }}>
+              <MetaChip icon={Link2} label="Contract" value="CBG5D...GW5N" />
+              <MetaChip icon={Globe2} label="Network" value="Testnet · Live" live />
+              <MetaChip icon={Database} label="Storage" value="IPFS" />
             </div>
           </div>
 
@@ -385,11 +383,22 @@ export default function Home() {
   );
 }
 
-function AmbientField() {
+/**
+ * MetaChip
+ * -----------------------------------------------------------------------
+ * Small glowing pill used in the hero to surface live protocol metadata
+ * (contract address, network, storage layer). Each chip carries its own
+ * icon, label, and value, with an optional pulsing "live" dot.
+ */
+function MetaChip({
+  icon: Icon, label, value, live = false,
+}: { icon: React.ElementType; label: string; value: string; live?: boolean }) {
   return (
-    <div className="ambient-field" aria-hidden="true">
-      <div className="ambient-drift animate-nebula-1 w-[520px] h-[520px] bg-gold/[0.05] -top-40 left-[10%]" />
-      <div className="ambient-drift animate-nebula-2 w-[420px] h-[420px] bg-gold/[0.04] top-[55%] right-[5%]" />
+    <div className="meta-chip">
+      <Icon className="w-3.5 h-3.5 text-gold-soft shrink-0" strokeWidth={1.5} />
+      <span className="meta-chip-label">{label}</span>
+      <span className="meta-chip-value">{value}</span>
+      {live && <span className="meta-chip-live" />}
     </div>
   );
 }
