@@ -34,7 +34,7 @@ void main(){gl_Position=position;}`;
       this.scale = scale;
       this.gl = canvas.getContext("webgl2")!;
       this.gl.viewport(0, 0, canvas.width * scale, canvas.height * scale);
-      this.shaderSource = violetShaderSource;
+      this.shaderSource = goldShaderSource;
     }
 
     updateShader(source: string) {
@@ -121,7 +121,7 @@ void main(){gl_Position=position;}`;
       const gl = this.gl;
       const program = this.program;
       if (!program || gl.getProgramParameter(program, gl.DELETE_STATUS)) return;
-      gl.clearColor(0.0196, 0.0196, 0.0353, 1); // deep-space void (#050509)
+      gl.clearColor(0.03, 0.027, 0.039, 1); // obsidian
       gl.clear(gl.COLOR_BUFFER_BIT);
       gl.useProgram(program);
       gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
@@ -210,8 +210,8 @@ void main(){gl_Position=position;}`;
     rendererRef.current.init();
     resize();
 
-    if (rendererRef.current.test(violetShaderSource) === null) {
-      rendererRef.current.updateShader(violetShaderSource);
+    if (rendererRef.current.test(goldShaderSource) === null) {
+      rendererRef.current.updateShader(goldShaderSource);
     }
 
     loop(0);
@@ -233,15 +233,14 @@ export const ShaderBackground = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 w-screen h-screen object-cover touch-none"
-      style={{ background: "#050509" }}
+      style={{ background: "#08070A", zIndex: -2 }}
       aria-hidden="true"
     />
   );
 };
 
-// Recolored to a violet/cyan palette (#8C6DFF -> #4FE0D8 accent) on a
-// deep-space obsidian-void base (#050509).
-const violetShaderSource = `#version 300 es
+// Recolored to MediVault's gold/obsidian palette (#D4A94E accent on #08070A base)
+const goldShaderSource = `#version 300 es
 precision highp float;
 out vec4 O;
 uniform vec2 resolution;
@@ -250,8 +249,6 @@ uniform float time;
 #define T time
 #define R resolution
 #define MN min(R.x,R.y)
-const vec3 VIOLET = vec3(0.549,0.427,1.0);
-const vec3 CYANC = vec3(0.310,0.878,0.847);
 float rnd(vec2 p) {
   p=fract(p*vec2(12.9898,78.233));
   p+=dot(p,p+34.56);
@@ -286,11 +283,10 @@ void main(void) {
     uv+=.1*cos(i*vec2(.1+.01*i, .8)+i*i+T*.5+.1*uv.x);
     vec2 p=uv;
     float d=length(p);
-    vec3 accent=mix(VIOLET,CYANC,sin(i*.35)*.5+.5);
-    col+=.00125/d*(cos(sin(i)*vec3(.3,.9,1.4))*accent+accent);
+    col+=.00125/d*(cos(sin(i)*vec3(.3,.9,1.4))*vec3(.83,.66,.31)+vec3(.83,.66,.31));
     float b=noise(i+p+bg*1.731);
-    col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)))*accent;
-    col=mix(col,vec3(bg*.10,bg*.08,bg*.19),d);
+    col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)))*vec3(.83,.66,.31);
+    col=mix(col,vec3(bg*.21,bg*.165,bg*.075),d);
   }
   O=vec4(col,1);
 }`;
