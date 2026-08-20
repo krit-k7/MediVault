@@ -117,15 +117,15 @@ export default function Home() {
       {/* TOPBAR */}
       <nav className="sticky top-0 z-[100] bg-obsidian/90 backdrop-blur-md flex items-center justify-between px-6 md:px-10 h-16 border-b border-line">
         <div className="flex items-center gap-2.5">
-          <CircleDot className="w-6 h-6 text-gold" strokeWidth={1.5} />
+          <CircleDot className="w-6 h-6 text-violet" strokeWidth={1.5} />
           <span className="font-mono-plex text-[15px] tracking-[3px] text-parchment">MEDIVAULT</span>
         </div>
         <div className="hidden md:flex items-center gap-1">
-          <Link href="#features" className="font-mono-plex text-[11px] font-medium tracking-[2px] uppercase text-muted px-5 py-2 hover:text-gold-soft transition-colors">Features</Link>
-          <Link href="#how" className="font-mono-plex text-[11px] font-medium tracking-[2px] uppercase text-muted px-5 py-2 hover:text-gold-soft transition-colors">How it Works</Link>
-          <Link href="#stats" className="font-mono-plex text-[11px] font-medium tracking-[2px] uppercase text-muted px-5 py-2 hover:text-gold-soft transition-colors">Stats</Link>
+          <Link href="#features" className="font-mono-plex text-[11px] font-medium tracking-[2px] uppercase text-muted px-5 py-2 hover:text-violet-soft transition-colors">Features</Link>
+          <Link href="#how" className="font-mono-plex text-[11px] font-medium tracking-[2px] uppercase text-muted px-5 py-2 hover:text-violet-soft transition-colors">How it Works</Link>
+          <Link href="#stats" className="font-mono-plex text-[11px] font-medium tracking-[2px] uppercase text-muted px-5 py-2 hover:text-violet-soft transition-colors">Stats</Link>
         </div>
-        <button onClick={connect} className={isConnected ? "btn-outline !py-2.5 !px-5" : "btn-gold !py-2.5 !px-6"}>
+        <button onClick={connect} className={isConnected ? "btn-outline !py-2.5 !px-5" : "btn-primary !py-2.5 !px-6"}>
           {isConnected ? `${address?.slice(0, 6)}...${address?.slice(-4)}` : "Connect Wallet"}
         </button>
       </nav>
@@ -138,17 +138,17 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-obsidian/70 via-obsidian/35 to-obsidian/5" />
         <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-obsidian/45 via-transparent to-transparent" />
 
-        <div className="glow-orb w-[600px] h-[600px] bg-gold/10 -top-40 -right-40" />
-        <div className="glow-orb w-[300px] h-[300px] bg-gold/10 top-1/3 -left-32" />
+        <div className="glow-orb w-[600px] h-[600px] bg-violet/10 -top-40 -right-40" />
+        <div className="glow-orb w-[300px] h-[300px] bg-cyan/10 top-1/3 -left-32" />
 
         <div className="relative z-[2] flex min-h-[calc(100vh-64px)] flex-col items-center px-6 pb-16 pt-20 text-center md:px-20 lg:pt-28 lg:pb-24">
           <div className="flex w-full max-w-5xl flex-col items-center">
-            <div className="badge-pill mb-8 reveal !bg-obsidian/80 !border-gold/50 backdrop-blur-md shadow-[0_2px_20px_-4px_rgba(0,0,0,0.6)]" style={{ transitionDelay: "0s" }}>
-              <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse-glow" />
+            <div className="badge-pill mb-8 reveal !bg-obsidian/80 !border-violet/50 backdrop-blur-md shadow-[0_2px_20px_-4px_rgba(0,0,0,0.6)]" style={{ transitionDelay: "0s" }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-violet animate-pulse-glow" />
               Stellar &middot; Soroban &middot; Patient-Owned
             </div>
             <h1 className="hero-heading font-serif text-[clamp(44px,6.2vw,84px)] leading-[1.05] text-parchment mb-8 max-w-[900px] reveal drop-shadow-[0_4px_28px_rgba(0,0,0,0.7)]" style={{ transitionDelay: "0.1s" }}>
-              Your health, <em className="italic text-gold-soft">confidential</em> on chain.
+              Your health, <em className="italic text-violet-soft">confidential</em> on chain.
             </h1>
             <p className="hero-copy text-lg leading-[1.75] max-w-[680px] mb-12 font-light reveal drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]" style={{ transitionDelay: "0.2s" }}>
               MediVault stores your medical records on IPFS and anchors access rights to the blockchain.
@@ -158,7 +158,7 @@ export default function Home() {
               <Link
                 href={address ? "/dashboard" : "#"}
                 onClick={(e) => !address && (e.preventDefault(), connect())}
-                className="btn-gold"
+                className="btn-primary"
               >
                 Launch App
                 <ArrowRight className="w-4 h-4" />
@@ -178,15 +178,15 @@ export default function Home() {
           {/* ===== VAULT CORE — hero visual (Data Constellation Vault) ===== */}
           <div className="mt-8 w-full max-w-5xl reveal" style={{ transitionDelay: "0.25s" }}>
             <div className="relative mx-auto flex max-w-[680px] items-center justify-center min-h-[380px] md:min-h-[460px]">
-              <div className="absolute h-[380px] w-[380px] rounded-full bg-gold/10 blur-3xl animate-pulse-glow md:h-[460px] md:w-[460px]" />
+              <div className="absolute h-[380px] w-[380px] rounded-full bg-violet/10 blur-3xl animate-pulse-glow md:h-[460px] md:w-[460px]" />
 
               <div className="constellation-floor" />
 
               <svg viewBox="0 0 640 420" className="absolute inset-0 h-full w-full" aria-hidden="true">
                 <defs>
                   <linearGradient id="lineFade" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#D4A94E" stopOpacity="0" />
-                    <stop offset="100%" stopColor="#FFD45C" stopOpacity="0.65" />
+                    <stop offset="0%" stopColor="#8C6DFF" stopOpacity="0" />
+                    <stop offset="100%" stopColor="#4FE0D8" stopOpacity="0.65" />
                   </linearGradient>
                 </defs>
                 {constellationNodes.map((n, i) => (
@@ -200,7 +200,7 @@ export default function Home() {
                       className="constellation-line"
                       style={{ animationDelay: `${i * 0.15}s` }}
                     />
-                    <circle r="3" fill="#FFD45C" className="constellation-pulse">
+                    <circle r="3" fill="#4FE0D8" className="constellation-pulse">
                       <animateMotion dur={`${3.2 + i * 0.4}s`} repeatCount="indefinite" begin={`${i * 0.5}s`}>
                         <mpath href={`#link-path-${i}`} />
                       </animateMotion>
@@ -215,7 +215,7 @@ export default function Home() {
                   className="constellation-node"
                   style={{ top: n.top, left: n.left, animationDelay: `${i * 0.3}s` }}
                 >
-                  <n.Icon className="w-4 h-4 text-gold-soft" strokeWidth={1.5} />
+                  <n.Icon className="w-4 h-4 text-violet-soft" strokeWidth={1.5} />
                 </div>
               ))}
 
@@ -232,7 +232,7 @@ export default function Home() {
       <div className="bg-charcoal/90 py-3 overflow-hidden border-b border-line whitespace-nowrap reveal">
         <div className="inline-flex gap-0 animate-ticker">
           {tickerItems.map((item, i) => (
-            <div key={i} className="font-mono-plex text-[11px] font-medium tracking-[3px] uppercase text-gold-soft px-10 flex items-center gap-4 after:content-['\2726'] after:text-gold-dim after:text-[9px]">
+            <div key={i} className="font-mono-plex text-[11px] font-medium tracking-[3px] uppercase text-violet-soft px-10 flex items-center gap-4 after:content-['\2726'] after:text-violet-dim after:text-[9px]">
               {item}
             </div>
           ))}
@@ -241,12 +241,12 @@ export default function Home() {
 
       {/* FEATURES */}
       <section className="px-6 py-28 md:px-20 bg-obsidian/90 relative overflow-hidden" id="features">
-        <div className="glow-orb w-[500px] h-[500px] bg-gold/5 top-0 right-0" />
+        <div className="glow-orb w-[500px] h-[500px] bg-violet/5 top-0 right-0" />
 
         <div className="flex flex-col md:flex-row items-end justify-between mb-10 border-b border-line pb-10 reveal">
           <div className="badge-pill mb-6 md:mb-0">01 &middot; Core Capabilities</div>
           <div className="flex-1 md:pl-10">
-            <div className="font-serif text-[42px] md:text-[56px] leading-[1.05] text-parchment">Why <em className="italic text-gold-soft">MediVault</em></div>
+            <div className="font-serif text-[42px] md:text-[56px] leading-[1.05] text-parchment">Why <em className="italic text-violet-soft">MediVault</em></div>
           </div>
         </div>
 
@@ -260,7 +260,7 @@ export default function Home() {
           <div>
             <div className="badge-pill mb-6">Security Model</div>
             <h3 className="font-serif text-[30px] md:text-[38px] leading-[1.15] text-parchment mb-5">
-              One vault. <em className="italic text-gold-soft">Total control.</em>
+              One vault. <em className="italic text-violet-soft">Total control.</em>
             </h3>
             <p className="text-muted text-[15px] leading-[1.8] font-light mb-8">
               Files are encrypted client-side before they ever leave your browser, pinned across the IPFS
@@ -275,11 +275,11 @@ export default function Home() {
           </div>
 
           <div className="relative flex items-center justify-center h-[240px] md:h-[280px]">
-            <div className="absolute w-[220px] h-[220px] rounded-full bg-gold/10 blur-2xl" />
+            <div className="absolute w-[220px] h-[220px] rounded-full bg-violet/10 blur-2xl" />
             <div className="absolute w-[210px] h-[210px] mini-ring animate-mini-ring opacity-40" />
             <div className="absolute w-[150px] h-[150px] mini-ring animate-mini-ring-reverse opacity-60" />
-            <div className="relative z-[2] w-20 h-20 rounded-full border border-gold/40 bg-charcoal flex items-center justify-center animate-icon-pulse">
-              <Lock className="w-8 h-8 text-gold" strokeWidth={1.5} />
+            <div className="relative z-[2] w-20 h-20 rounded-full border border-violet/40 bg-charcoal flex items-center justify-center animate-icon-pulse">
+              <Lock className="w-8 h-8 text-violet" strokeWidth={1.5} />
             </div>
           </div>
         </div>
@@ -307,7 +307,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row items-end justify-between mb-10 border-b border-line pb-10 reveal">
           <div className="badge-pill mb-6 md:mb-0">02 &middot; Process</div>
           <div className="flex-1 md:pl-10">
-            <div className="font-serif text-[42px] md:text-[56px] leading-[1.05] text-parchment">How it <em className="italic text-gold-soft">works</em></div>
+            <div className="font-serif text-[42px] md:text-[56px] leading-[1.05] text-parchment">How it <em className="italic text-violet-soft">works</em></div>
           </div>
         </div>
 
@@ -357,15 +357,15 @@ export default function Home() {
 
       {/* CTA */}
       <section className="relative bg-charcoal/85 px-6 py-28 md:px-20 grid md:grid-cols-2 border-t border-line content-center items-center gap-16 overflow-hidden">
-        <div className="glow-orb w-[400px] h-[400px] bg-gold/10 -bottom-32 -left-20" />
+        <div className="glow-orb w-[400px] h-[400px] bg-cyan/10 -bottom-32 -left-20" />
         <h2 className="relative z-[2] font-serif text-[46px] md:text-[64px] leading-[1.1] text-parchment reveal">
-          Own your <em className="italic text-gold-soft">medical</em> future
+          Own your <em className="italic text-violet-soft">medical</em> future
         </h2>
         <div className="relative z-[2] reveal" style={{ transitionDelay: "0.15s" }}>
           <p className="text-muted text-lg leading-[1.8] font-light mb-10">
             Join thousands of patients who've reclaimed control of their health data. No subscriptions. No corporations. Just you and your records, secured by cryptography.
           </p>
-          <button onClick={connect} className="btn-gold">
+          <button onClick={connect} className="btn-primary">
             Connect Wallet &amp; Begin
             <ArrowRight className="w-4 h-4" />
           </button>
@@ -374,7 +374,7 @@ export default function Home() {
 
       <footer className="bg-obsidian/95 px-6 md:px-20 py-10 flex flex-col md:flex-row items-center justify-between border-t border-line gap-6">
         <div className="flex items-center gap-2.5">
-          <CircleDot className="w-5 h-5 text-gold" strokeWidth={1.5} />
+          <CircleDot className="w-5 h-5 text-violet" strokeWidth={1.5} />
           <span className="font-mono-plex text-[13px] tracking-[3px] text-parchment">MEDIVAULT</span>
         </div>
         <div className="font-mono-plex text-[10px] tracking-[2px] uppercase text-muted-dim">© 2026 MediVault Protocol. Decentralised. Open Source.</div>
@@ -395,7 +395,7 @@ function MetaChip({
 }: { icon: React.ElementType; label: string; value: string; live?: boolean }) {
   return (
     <div className="meta-chip">
-      <Icon className="w-3.5 h-3.5 text-gold-soft shrink-0" strokeWidth={1.5} />
+      <Icon className="w-3.5 h-3.5 text-violet-soft shrink-0" strokeWidth={1.5} />
       <span className="meta-chip-label">{label}</span>
       <span className="meta-chip-value">{value}</span>
       {live && <span className="meta-chip-live" />}
@@ -416,14 +416,14 @@ function VaultCore() {
     <div className="vault-hex" aria-label="MediVault encrypted security core">
       <div className="vault-hex-ring" />
       <div className="vault-hex-inner">
-        <div className="relative mb-1.5 flex h-11 w-11 items-center justify-center rounded-full border border-[#ffd15a]/70 bg-[#ff9d1c]/15 shadow-[0_0_22px_rgba(255,151,29,.35)]">
-          <Lock className="h-5 w-5 text-[#ffd15a]" strokeWidth={1.8} />
-          <span className="absolute inset-[-6px] rounded-full border border-[#ff9d1c]/20 animate-ping" />
+        <div className="relative mb-1.5 flex h-11 w-11 items-center justify-center rounded-full border border-[#8C6DFF]/70 bg-[#8C6DFF]/15 shadow-[0_0_22px_rgba(140,109,255,.35)]">
+          <Lock className="h-5 w-5 text-[#8C6DFF]" strokeWidth={1.8} />
+          <span className="absolute inset-[-6px] rounded-full border border-[#8C6DFF]/20 animate-ping" />
         </div>
         <div className="font-serif text-[19px] leading-none text-parchment">MediVault</div>
         <div className="mt-2 flex items-center gap-1.5">
           <span className="h-1.5 w-1.5 rounded-full bg-success shadow-[0_0_8px_#7FA66B] animate-blink" />
-          <span className="font-mono-plex text-[8px] uppercase tracking-[2px] text-[#ffd15a]">Secure · Live</span>
+          <span className="font-mono-plex text-[8px] uppercase tracking-[2px] text-[#4FE0D8]">Secure · Live</span>
         </div>
       </div>
     </div>
@@ -443,10 +443,10 @@ function FeatureCard({
         <ArrowRight className="w-3.5 h-3.5 text-muted-dim opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
       </div>
       <div
-        className="feature-icon-float w-12 h-12 rounded-lg border border-line-strong flex items-center justify-center mb-6 group-hover:border-gold/50 group-hover:bg-gold/10 relative z-[2]"
+        className="feature-icon-float w-12 h-12 rounded-lg border border-line-strong flex items-center justify-center mb-6 group-hover:border-violet/50 group-hover:bg-violet/10 relative z-[2]"
         style={{ animationDelay: `${index * 0.35}s` }}
       >
-        <Icon className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
+        <Icon className="w-5 h-5 text-violet-soft" strokeWidth={1.5} />
       </div>
       <h3 className="font-serif text-[22px] leading-[1.25] text-parchment mb-3 relative z-[2]">{title}</h3>
       <p className="text-sm leading-[1.7] text-muted font-light mb-6 relative z-[2]">{desc}</p>
@@ -466,7 +466,7 @@ function StatBlock({ val, label, index = 0 }: { val: number; label: string; inde
       className="p-14 border-r border-line last:border-0 text-center relative overflow-hidden group reveal"
       style={{ transitionDelay: `${index * 0.12}s` }}
     >
-      <div className="font-serif text-[52px] text-gold leading-none relative z-10">
+      <div className="font-serif text-[52px] text-violet leading-none relative z-10">
         {val.toLocaleString()}{label === "% Uptime" ? "" : "+"}
       </div>
       <div className="font-mono-plex text-[10px] tracking-[3px] uppercase text-muted mt-3 relative z-10">{label}</div>
@@ -483,7 +483,7 @@ function TimelineStep({
       {/* node on the central line */}
       <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[3]">
         <div className="timeline-node reveal" style={{ transitionDelay: `${index * 0.15}s` }}>
-          <span className="font-mono-plex text-[13px] text-gold-soft">{n}</span>
+          <span className="font-mono-plex text-[13px] text-violet-soft">{n}</span>
         </div>
       </div>
 
@@ -494,7 +494,7 @@ function TimelineStep({
         >
           <div className="flex items-center gap-3 mb-5">
             <div className="w-11 h-11 rounded-lg border border-line-strong flex items-center justify-center feature-icon-float" style={{ animationDelay: `${index * 0.3}s` }}>
-              <Icon className="w-5 h-5 text-gold-soft" strokeWidth={1.5} />
+              <Icon className="w-5 h-5 text-violet-soft" strokeWidth={1.5} />
             </div>
             <span className="font-mono-plex text-[11px] text-muted-dim tracking-[3px] md:hidden">STEP {n}</span>
           </div>
