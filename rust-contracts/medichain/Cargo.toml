@@ -1,21 +1,29 @@
+# Package metadata
 [package]
-name = "medichain"
-version = "0.1.0"
-edition = "2021"
+name = "medichain"          # Name of the project/package
+version = "0.1.0"           # Current package version
+edition = "2021"            # Rust edition used by the project
 
+# Library configuration
 [lib]
-crate-type = ["cdylib", "rlib"]
+crate-type = ["cdylib", "rlib"]  # Build as a dynamic library and Rust library
 
+# Project dependencies
 [dependencies]
-soroban-sdk = "21.0.0"
+soroban-sdk = "21.0.0"       # Stellar Soroban SDK for smart contract development
 
+# Dependencies used only during testing
 [dev-dependencies]
-soroban-sdk = { version = "21.0.0", features = ["testutils"] }
+soroban-sdk = { 
+    version = "21.0.0",
+    features = ["testutils"]    # Enables Soroban testing utilities
+}
 
+# Release build configuration
 [profile.release]
-opt-level = "z"
-overflow-checks = true
-debug = 0
-strip = "symbols"
-lto = true
-codegen-units = 1
+opt-level = "z"             # Optimize for the smallest possible binary size
+overflow-checks = true      # Enable runtime integer overflow checks
+debug = 0                   # Disable debug information in release builds
+strip = "symbols"           # Remove symbol information to reduce binary size
+lto = true                  # Enable Link-Time Optimization
+codegen-units = 1           # Use a single codegen unit for better optimization
