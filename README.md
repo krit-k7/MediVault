@@ -73,6 +73,7 @@ At its core, MediChain solves a real problem with traditional EHR systems: centr
 | 🎥 Demo Video | [Watch on YouTube](https://www.youtube.com/watch?v=UFq0hRb6Gqc) |
 | ⚙️ CI Pipeline | [GitHub Actions](https://github.com/krit-k7/Stellar-Green/actions/workflows/ci.yml) |
 | 📊 User Feedback | [Visit Link](https://docs.google.com/spreadsheets/d/1zOhuFVbrQZlJ1NcUoBrmZxb7JP9WRP9J/edit?gid=1132381471#gid=1132381471) |
+| 🐦 X Post | [View on X](https://x.com/zoid7r/status/2094120658406138004) |
 
 ---
 
