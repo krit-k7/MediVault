@@ -13,7 +13,7 @@
 ![Rust](https://img.shields.io/badge/Rust-Soroban_SDK-orange?logo=rust)
 ![Stellar](https://img.shields.io/badge/Stellar-Testnet-7D00FF?logo=stellar)
 ![License](https://img.shields.io/badge/License-MIT-green)
-[![View on X](https://img.shields.io/badge/View%20on%20X-000000?logo=x&logoColor=white)](https://x.com/zoid7r/status/2094120658406138004)
+[![View on X](https://img.shields.io/badge/View%20on%20X-000000?logo=x&logoColor=white)](https://x.com/krit_giri/status/2095144673354686947)
 
 [🌐 Live Demo](https://stellar-green-sepia.vercel.app/) · [🎥 Demo Video](https://www.youtube.com/watch?v=UFq0hRb6Gqc) · [📊 User Feedback](https://docs.google.com/spreadsheets/d/1zOhuFVbrQZlJ1NcUoBrmZxb7JP9WRP9J/edit?gid=1132381471#gid=1132381471) · [🔗 Pitch Deck](https://prezi.com/p/x1w0zp9u2cuw/?present=1) · [🐦 X Post](https://x.com/zoid7r/status/2094120658406138004)
 </div>
